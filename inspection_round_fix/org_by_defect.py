@@ -6,10 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 DB_URL = os.getenv("DB_URL")
-SOURCE_ROOT = os.getenvs("SOURCE_PATH")
-TARGET_INSPECTION_ROUND = os.get("TARGET_INSPECTION_ROUND")
+SOURCE_PATH = os.getenv("SOURCE_PATH")
+TARGET_INSPECTION_ROUND = os.getenv("TARGET_INSPECTION_ROUND")
 
 def organise_by_db_names():
     try:
@@ -18,10 +17,10 @@ def organise_by_db_names():
         
         query = """
         SELECT 
-            CONCAT(d.defect_id, '_fn_', d.frame_number) AS file_key,
+            CONCAT(d.defect_id, '_fn_', d.frame_number, '_', d.inspection_round) AS file_key,
             COALESCE(c.defect_class_name, CAST(d.defect_class_id AS TEXT)) AS folder_name
-        FROM wip_current.road_defects d
-        LEFT JOIN wip_current.defect_classes c 
+        FROM tender_prep_a0030.road_defects d
+        LEFT JOIN tender_prep_a0030.defect_classes c 
             ON d.defect_class_id = c.defect_class_id
         WHERE d.inspection_round = %s;
         """
@@ -41,7 +40,7 @@ def organise_by_db_names():
 
         print("Scanning directory structure...")
         tasks = []
-        for root, _, files in os.walk(SOURCE_ROOT):
+        for root, _, files in os.walk(SOURCE_PATH):
             if os.path.basename(root) in valid_folder_names:
                 continue
             
@@ -77,7 +76,7 @@ def organise_by_db_names():
                     except Exception as e:
                         tqdm.write(f"Error moving {filename}: {e}")
 
-        print(f"\nSuccess! Processed {moved_count} images into descriptive folders.")
+        print(f"\nProcessed {moved_count} images into descriptive folders.")
 
     except Exception as e:
         print(f"Database or File Error: {e}")

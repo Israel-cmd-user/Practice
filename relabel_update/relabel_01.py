@@ -12,10 +12,10 @@ SCHEMA_NAME = os.getenv("SCHEMA_NAME")
 DB_URL = os.getenv("DB_URL")
 ROOT_PATH = os.getenv("ROOT_PATH")
 TARGET_ROUND = os.getenv("TARGET_ROUND")
-TARGET_ROUND_2 = os.getenv("TARGET_ROUND_2")
-TARGET_ROUND_3 = os.getenv("TARGET_ROUND_3")
-TARGET_ROUND_4 = os.getenv("TARGET_ROUND_4")
-INSPECTION_ROUNDS = [TARGET_ROUND, TARGET_ROUND_2, TARGET_ROUND_3, TARGET_ROUND_4]
+# TARGET_ROUND_2 = os.getenv("TARGET_ROUND_2")
+# TARGET_ROUND_3 = os.getenv("TARGET_ROUND_3")
+# TARGET_ROUND_4 = os.getenv("TARGET_ROUND_4")
+INSPECTION_ROUNDS = [TARGET_ROUND]
 MY_COLUMNS = ['metadata_id', 'file_list', 'flags', 'temporal_coordinates', 'spatial_coordinates', 'metadata']
 
 Base = declarative_base()
@@ -193,9 +193,9 @@ def build_and_merge_rounds(base_path, output_folder):
             session.commit()
             print(f"Successfully inserted {len(db_ready_df)} rows for {round_id}")
             update_query = """
-                UPDATE wip_2026_02.road_defects AS target
+                UPDATE wip_current.road_defects AS target
                 SET geom = source.geom
-                FROM wip_2026_02.road_defects AS source
+                FROM wip_current.road_defects AS source
                 WHERE target.video_source = source.video_source 
                 AND target.inspection_round = source.inspection_round 
                 AND target.frame_number = source.frame_number
@@ -250,8 +250,8 @@ def extract_csv_values(merged_df):
     return df    
 
 if __name__ == "__main__":
-    input_path = r'C:\Users\is2648257\Documents\Videos\Csv\relabeling csv'
-    output_path = r'C:\Users\is2648257\Documents\Videos\Csv\relabeling csv\results'
+    input_path = r'C:\Users\is2648257\Documents\Videos\Csv\relabeling csv\2026-03V4'
+    output_path = r'C:\Users\is2648257\Documents\Videos\Csv\relabeling csv\2026-03V4\results'
     
     for r_id, cleaned_df in build_and_merge_rounds(input_path, output_path):
         print(f"\n--- Processing Complete for {r_id} ---")
