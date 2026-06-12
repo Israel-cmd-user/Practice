@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 
-df = pd.read_csv(r"C:\Users\is2648257\Documents\Videos\Test videos\Test_videos_7\2026-04-29-15-09-37\Gps_metadata.csv")
+df = pd.read_csv(r"F:\1\2026-05-26-11-08-30\Gps_metadata.csv")
 df['unix_time'] = pd.to_datetime(df['GoPro:GPSDateTime'], format='%Y:%m:%d %H:%M:%S.%f').astype(np.int64) / 10**9
 
 # Clean trailing duplicates (The 400 rows of overflow)
@@ -14,8 +14,8 @@ df_clean = df.iloc[:last_moving_row + 1].copy()
 start_time = df_clean['unix_time'].iloc[0]
 df_clean['relative_time'] = df_clean['unix_time'] - start_time
 
-fps = 240
-frame_step = 10
+fps = 239.76023976023976
+frame_step = 20
 max_duration = df_clean['relative_time'].max()
 
 # 'labels' will be 0, 1, 2, 3... 

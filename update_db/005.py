@@ -4,6 +4,7 @@ from sqlalchemy import (create_engine, Column, String, update,
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.dialects.postgresql import insert
 from dotenv import load_dotenv
+from tqdm import tqdm
 
 load_dotenv()
 
@@ -48,14 +49,52 @@ print(f"Pre verified true's: {verified_count}")
 print(f"Pre verified false's: {unverified_count}")
 
 # Reset flags before processing
-session.query(ImageRecord)\
-    .filter(ImageRecord.inspection_round.in_(INSPECTION_ROUNDS))\
-    .update({
-        ImageRecord.verified: False,
-        ImageRecord.is_deleted: False,
-        ImageRecord.is_sealed: False
-    })
-session.commit()
+BATCH_SIZE = 10000 
+
+print("Calculating ID boundaries...")
+# Fetch the min and max ID for the rows matching your criteria
+boundaries = session.query(
+    func.min(ImageRecord.id),
+    func.max(ImageRecord.id)
+).filter(ImageRecord.inspection_round.in_(INSPECTION_ROUNDS)).first()
+
+min_id, max_id = boundaries[0], boundaries[1]
+
+if min_id is not None and max_id is not None:
+    # Calculate total steps for tqdm progress bar
+    total_chunks = ((max_id - min_id) // BATCH_SIZE) + 1
+    
+    print(f"Resetting records in batches of {BATCH_SIZE}...")
+    with tqdm(total=total_chunks, desc="Resetting flags") as pbar:
+        current_id = min_id
+        while current_id <= max_id:
+            next_id = current_id + BATCH_SIZE
+            
+            # Perform the update strictly within the current ID chunk
+            session.query(ImageRecord)\
+                .filter(
+                    ImageRecord.inspection_round.in_(INSPECTION_ROUNDS),
+                    ImageRecord.id >= current_id,
+                    ImageRecord.id < next_id
+                )\
+                .update(
+                    {
+                        ImageRecord.verified: False,
+                        ImageRecord.is_deleted: False,
+                        ImageRecord.is_sealed: False
+                    },
+                    synchronize_session=False  # <-- CRITICAL FOR PERFORMANCE
+                )
+            
+            # Commit each batch immediately to free up DB locks and logs
+            session.commit()
+            
+            current_id = next_id
+            pbar.update(1)
+            
+    print("Reset complete successfully!")
+else:
+    print("No records found matching the inspection rounds.")
 
 def build_local_file_map(base_path):
     seen_rounds = set()
