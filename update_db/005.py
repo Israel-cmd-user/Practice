@@ -56,7 +56,13 @@ print("Calculating ID boundaries...")
 boundaries = session.query(
     func.min(ImageRecord.id),
     func.max(ImageRecord.id)
-).filter(ImageRecord.inspection_round.in_(INSPECTION_ROUNDS)).first()
+).filter(ImageRecord.inspection_round.in_(INSPECTION_ROUNDS),
+         or_(
+             ImageRecord.verified == None,
+             ImageRecord.is_deleted == None,
+             ImageRecord.is_sealed == None
+         )       
+        ).first()
 
 min_id, max_id = boundaries[0], boundaries[1]
 
@@ -75,13 +81,19 @@ if min_id is not None and max_id is not None:
                 .filter(
                     ImageRecord.inspection_round.in_(INSPECTION_ROUNDS),
                     ImageRecord.id >= current_id,
-                    ImageRecord.id < next_id
+                    ImageRecord.id < next_id,
+
+                    or_(
+                        ImageRecord.verified == None,
+                        ImageRecord.is_deleted == None,
+                        ImageRecord.is_sealed == None
+                    )
                 )\
                 .update(
                     {
-                        ImageRecord.verified: False,
-                        ImageRecord.is_deleted: False,
-                        ImageRecord.is_sealed: False
+                        ImageRecord.verified: func.coalesce(ImageRecord.verified, False),
+                        ImageRecord.is_deleted: func.coalesce(ImageRecord.is_deleted, False),
+                        ImageRecord.is_sealed: func.coalesce(ImageRecord.is_sealed, False)
                     },
                     synchronize_session=False  # <-- CRITICAL FOR PERFORMANCE
                 )
@@ -94,7 +106,7 @@ if min_id is not None and max_id is not None:
             
     print("Reset complete successfully!")
 else:
-    print("No records found matching the inspection rounds.")
+    print("All records are already initialised. No reset required.\n")
 
 def build_local_file_map(base_path):
     seen_rounds = set()
