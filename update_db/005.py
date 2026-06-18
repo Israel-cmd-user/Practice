@@ -123,7 +123,7 @@ def build_local_file_map(base_path):
 
         if inspection_round not in seen_rounds:
             print(f" Success: Detected Round '{inspection_round}' in Project '{current_project}'")
-            print(f"   Sample Path: {root}")
+            # print(f"   Sample Path: {root}")
             seen_rounds.add(inspection_round)
 
         folder_name = os.path.basename(root).lower()

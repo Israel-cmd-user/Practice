@@ -1,0 +1,170 @@
+ :root {
+            --primary-color: #1e3a8a;
+            --border-color: #64748b;
+            --bg-light: #f8fafc;
+            --header-bg: #e2e8f0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cbd5e1;
+            margin: 0;
+            padding: 10px;
+            color: #0f172a;
+        }
+
+        /* Interactive Controls Sticky Header */
+        .action-bar {
+            max-width: 1020px;
+            margin: 0 auto 10px auto;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .action-bar h2 { margin: 0; font-size: 1rem; color: var(--primary-color); }
+        .btn-group { display: flex; gap: 8px; }
+        .btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-pdf { background-color: #ef4444; color: white; }
+        .btn-excel { background-color: #22c55e; color: white; }
+
+        /* Strict Single-Page Print Layout Container */
+        .document-page {
+            max-width: 1020px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px 25px;
+            box-sizing: border-box;
+            font-size: 11px; /* Scaled down for 1-page constraints */
+            line-height: 1.2;
+        }
+
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 8px;
+        }
+        .doc-header-left h1 { font-size: 1.2rem; margin: 0 0 2px 0; color: var(--primary-color); }
+        .doc-header-left h3 { font-size: 0.9rem; margin: 0; font-weight: 600; }
+        .doc-header-right { text-align: right; font-size: 0.75rem; color: #475569; }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 8px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-top: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* Micro Form Grids */
+        table.form-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+        table.form-grid th, table.form-grid td {
+            border: 1px solid var(--border-color);
+            padding: 3px 10px;
+            vertical-align: middle;
+        }
+        table.form-grid th {
+            background-color: var(--header-bg);
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Seamless Interactive Form Elements */
+        input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            border: 1px solid transparent;
+            background-color: transparent;
+            padding: 1px 2px;
+            font-size: 11px;
+            font-family: inherit;
+            box-sizing: border-box;
+            color: #000;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            outline: none;
+        }
+        .filled { font-weight: 600; }
+        .cell-center { text-align: center !important; }
+        .cell-center input { text-align: center; }
+
+        /* Compact Ratings Matrix */
+        .matrix-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .matrix-table th { text-align: center; font-size: 10px; padding: 2px; }
+        .matrix-table td { padding: 2px; font-size: 11px; }
+        .rating-box {
+            display: flex;
+            gap: 1px;
+            justify-content: center;
+        }
+        .rating-box div {
+            display: flex;
+            align-items: center;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+        }
+        .rating-box input {
+            width: 16px;
+            height: 14px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        /* Meta Grid Splits */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* Ultra-dense Footer Legend Footnote */
+        .legend-box {
+            margin-top: 6px;
+            border: 1px solid var(--border-color);
+            padding: 6px;
+            font-size: 9px;
+            background-color: #f8fafc;
+            line-height: 1.3;
+        }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 3px;
+        }
+
+        /* Print Media Target Settings to Enforce Page Isolation */
+        @media print {
+            body { background: white; padding: 0; }
+            #no-print-actions { display: none !important; }
+            .document-page { box-shadow: none; padding: 0; width: 100%; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
