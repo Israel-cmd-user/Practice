@@ -12,10 +12,10 @@
 <body>
 
     <div class="action-bar" id="no-print-actions">
-        <h2>Live Page Engine</h2>
+        <h2>Bridge and Structure Management</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf">Export 1-Page PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel">Export Data Data (Excel)</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf">Export to PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel">Export to Excel</button>
         </div>
     </div>
 
@@ -27,8 +27,8 @@
                 <h3>Inspection Sheet - Structure: B0003 - Omatako River</h3>
             </div>
             <div class="doc-header-right">
-                <strong>Print Date:</strong> <input type="text" value="26/05/2025 16:38:20" style="width:110px; display:inline-block;"><br>
-                <strong>Page:</strong> <input type="number" value="1" style="width:20px; display:inline-block;"> of <input type="number" value="1" style="width:20px; display:inline-block;"><br>
+                <strong>Print Date:</strong> 
+                <input type="text" id="printDate" style="width:140px; display:inline-block;"><br>
                 <input type="text" value="(B0003) : B0003 - Omatako River Network 15" style="width:220px; text-align:right;">
             </div>
         </div>
@@ -41,10 +41,10 @@
                 <th style="width: 25%;">Structure Name</th>
             </tr>
             <tr>
-                <td><input type="text" value="Namibia Roads Authority" class="filled"></td>
-                <td><input type="text" value="Bridge" class="filled"></td>
-                <td><input type="text" value="B0003" class="filled" style="font-weight: bold; color: var(--primary-color);"></td>
-                <td><input type="text" value="Omatako River" class="filled"></td>
+                <td><input type="text" class="filled"></td>
+                <td><input type="text" class="filled"></td>
+                <td><input type="text" class="filled" style="font-weight: bold; color: var(--primary-color);"></td>
+                <td><input type="text" class="filled"></td>
             </tr>
         </table>
 
@@ -52,22 +52,23 @@
             <div>
                 <div class="section-title">Inspection Information</div>
                 <table class="form-grid">
-                    <tr><th style="width:35%;">Inspection Type</th><td><select style="width:50px; font-weight:bold;">
-                        <option value="N" selected>Smec</option>
-                        <option value="Y">Sce</option>
-                    </select></td></tr>
-                    <tr><th>Inspector Name</th><td><input type="text" value="J Joubert"></td></tr>
-                    <tr><th>Firm</th><td><input type="text" value="Ninham Shand/Burmeister JV"></td></tr>
-                    <tr><th>Date</th><td><input type="text" value="02/02/2008"></td></tr>
+                    <tr><th style="width:35%;">Inspection Type</th><td><input type="text"></td></tr>
+                    <tr><th>Inspector Name</th><td><input type="text"></td></tr>
+                    <tr><th>Firm</th><td>
+                        <select style="width:50px; font-weight:bold;">
+                            <option value="N" selected>Smec</option>
+                            <option value="Y">Sce</option>
+                        </select></td></tr>
+                    <tr><th>Date</th><td><input type="date"></td></tr>
                 </table>
             </div>
             <div>
                 <div class="section-title">Classification</div>
                 <table class="form-grid">
-                    <tr><th style="width:35%;">Asset Class</th><td><input type="text" value="Bridge"></td></tr>
-                    <tr><th>Size Category</th><td><input type="text" value="Small bridge (structure length &lt; 20 m)"></td></tr>
-                    <tr><th rowspan="2">GPS Coordinates</th><td>Lat: <input type="text" value="-21.22276560" style="width:75%; display:inline-block;"></td></tr>
-                    <tr><td>Long: <input type="text" value="17.05811226" style="width:75%; display:inline-block;"></td></tr>
+                    <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
+                    <tr><th>Size Category</th><td><input type="text"></td></tr>
+                    <tr><th rowspan="2">GPS Coordinates</th><td>Lat: <input type="text" style="width:75%; display:inline-block;"></td></tr>
+                    <tr><td>Lon: <input type="text" style="width:75%; display:inline-block;"></td></tr>
                 </table>
             </div>
         </div>
@@ -81,8 +82,8 @@
                     </tr>
                     <tr>
                         <th>Length</th>
-                        <td><input type="text" value="9.5"></td><td><input type="text" value="19.8"></td><td><input type="text" value="7.5"></td>
-                        <td><input type="text" value="9.3"></td><td><input type="text" value="9.5"></td><td><input type="text" value="9.5"></td>
+                        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
                     </tr>
                 </table>
             </div>
@@ -92,7 +93,7 @@
                     <tr><th>Position</th><th>Minimum Clearance</th></tr>
                     <tr>
                         <td><input type="text" value="Abutment"></td>
-                        <td><input type="text" value="2.10"></td>
+                        <td><input type="text"></td>
                     </tr>
                 </table>
             </div>
@@ -102,21 +103,21 @@
             <div>
                 <div class="section-title">Location Details</div>
                 <table class="form-grid">
-                    <tr><th style="width:35%;">Road Number</th><td><input type="text" value="D2475"></td></tr>
-                    <tr><th>Road km / Chainage</th><td><input type="text" value="64"></td></tr>
-                    <tr><th>Maintenance Region</th><td><input type="text" value="Otjiwarongo"></td></tr>
-                    <tr><th>Feature Crossed</th><td><input type="text" value="River"></td></tr>
-                    <tr><th>Feature Name</th><td><input type="text" value="OMATAKO RIVER" style="font-weight:bold;"></td></tr>
+                    <tr><th style="width:35%;">Road Number</th><td><input type="text"></td></tr>
+                    <tr><th>Road km / Chainage</th><td><input type="text"></td></tr>
+                    <tr><th>Maintenance Region</th><td><input type="text"></td></tr>
+                    <tr><th>Feature Crossed</th><td><input type="text"></td></tr>
+                    <tr><th>Feature Name</th><td><input type="text" va style="font-weight:bold;"></td></tr>
                 </table>
             </div>
             <div>
                 <div class="section-title">Structure Information</div>
                 <table class="form-grid">
-                    <tr><th style="width:40%;">Bridge Type</th><td><input type="text" value="Simply supported"></td></tr>
-                    <tr><th>Year constructed</th><td><input type="text" value="1938"></td></tr>
-                    <tr><th>Bridge orientation</th><td><input type="text" value="North/South"></td></tr>
-                    <tr><th>No of spans</th><td><input type="number" value="4"></td></tr>
-                    <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" value="5.60" style="width:30%; display:inline-block;"> W: <input type="text" value="8.65" style="width:30%; display:inline-block;"></td></tr>
+                    <tr><th style="width:40%;">Bridge Type</th><td><input type="text"></td></tr>
+                    <tr><th>Year constructed</th><td><input type="text"></td></tr>
+                    <tr><th>Bridge orientation</th><td><input type="text"></td></tr>
+                    <tr><th>No of spans</th><td><input type="number"></td></tr>
+                    <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
                 </table>
             </div>
         </div>
@@ -132,44 +133,44 @@
                     </tr>
                     <tr>
                         <td>01. Approach Embankment</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>02. Guardrail</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="4"></div><div><input type="text" value="2"></div><div><input type="text" value="1"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>03. Waterway</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="3"></div><div><input type="text" value="2"></div><div><input type="text" value="2"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="U"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>04. Approach Embankment Protect.</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>05. Abutment Foundations</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="U"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>06. Abutments</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="U"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>07. Wing/Retaining Walls</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td>08. Surfacing</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>09. Superstructure Drainage</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" value="4"></div><div><input type="text" value="2"></div><div><input type="text" value="1"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>10. Kerbs / Sidewalks</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" value="1"></div><div><input type="text" value="2"></div><div><input type="text" value="1"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>11. Parapet</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>21. Miscellaneous Items</td><td class="cell-center">BA</td><td><div class="rating-box"><div><input type="text" value="1"></div><div><input type="text" value="4"></div><div><input type="text" value="1"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>08. Surfacing</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>09. Superstructure Drainage</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>10. Kerbs / Sidewalks</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>11. Parapet</td><td class="cell-center">AS</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>21. Miscellaneous Items</td><td class="cell-center">BA</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                 </table>
             </div>
 
@@ -182,48 +183,48 @@
                     </tr>
                     <tr>
                         <td rowspan="2">12. Pier Protection Works</td><td class="cell-center">P1</td>
-                        <td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                     
                     <tr>
                         <td rowspan="2">13. Pier Foundations</td><td class="cell-center">P1</td>
-                        <td><div class="rating-box"><div><input type="text" value="U"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" value="U"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" value="U"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                     
                     <tr>
                         <td rowspan="2">14. Piers & Columns</td><td class="cell-center">P1</td>
-                        <td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                     
                     <tr>
                         <td>15. Bearings</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>17. Expansion Joints</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" value="3"></div><div><input type="text" value="4"></div><div><input type="text" value="1"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" value="3"></div><div><input type="text" value="4"></div><div><input type="text" value="1"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td rowspan="2">18. Longitudinal Members</td><td class="cell-center">S1</td>
-                        <td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">S2</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">S2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center">S3</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td class="cell-center">S4</td><td><div class="rating-box"><div><input type="text" value="X"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td></tr>
+                    <tr><td class="cell-center">S3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">S4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                     
                     <tr>
                         <td rowspan="2">20. Decks and Slabs</td><td class="cell-center">S1</td>
-                        <td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
-                        <td class="cell-center">S2</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">S2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center">S3</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td><td class="cell-center">S4</td><td><div class="rating-box"><div><input type="text" value="0"></div><div><input type="text" value="-"></div><div><input type="text" value="-"></div></div></td></tr>
+                    <tr><td class="cell-center">S3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">S4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                 </table>
             </div>
         </div>
@@ -231,16 +232,16 @@
         <div class="section-title">Remedial Work Recommendations</div>
         <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
             <colgroup>
-                <col style="width: 25px;">
-                <col style="width: 140px;">
-                <col style="width: 45px;">
-                <col style="width: 220px;">
-                <col style="width: 35px;">
-                <col style="width: 35px;">
-                <col style="width: 30px;">
-                <col style="width: 30px;">
-                <col style="width: 200px;">
-                <col style="width: 40px;">
+                <col style="width: 5%;">
+                <col style="width: 18%;">
+                <col style="width: 7%;">
+                <col style="width: 22%;">
+                <col style="width: 6%;">
+                <col style="width: 6%;">
+                <col style="width: 5%;">
+                <col style="width: 5%;">
+                <col style="width: 18;">
+                <col style="width: 6%;">
             </colgroup>
             <thead>
                 <tr>
@@ -248,16 +249,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td><input type="text" value="02. Guardrail"></td><td><input type="text" value="BA" class="cell-center"></td><td><input type="text" value="467. Replace posts (steel or timber)"></td><td><input type="text" value="4" class="cell-center"></td><td><input type="text" value="No" class="cell-center"></td><td><input type="text" value="1" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value="ERECT MARKER BOARDS"></td><td><input type="text" value="S10" class="cell-center"></td></tr>
-                <tr><td>2</td><td><input type="text" value="03. Waterway"></td><td><input type="text" value="S3" class="cell-center"></td><td><input type="text" value="207. Clear debris"></td><td><input type="text" value="5" class="cell-center"></td><td><input type="text" value="m3" class="cell-center"></td><td><input type="text" value="1" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value=""></td><td><input type="text" value="S02" class="cell-center"></td></tr>
-                <tr><td>3</td><td><input type="text" value="03. Waterway"></td><td><input type="text" value="S1, S4" class="cell-center"></td><td><input type="text" value="151. Backfill scour damage (earth)"></td><td><input type="text" value="100" class="cell-center"></td><td><input type="text" value="m3" class="cell-center"></td><td><input type="text" value="1" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value=""></td><td><input type="text" value="S01" class="cell-center"></td></tr>
-                <tr><td>4</td><td><input type="text" value="09. Superstructure Drainage"></td><td><input type="text" value="AS" class="cell-center"></td><td><input type="text" value="208. Clear scuppers"></td><td><input type="text" value="10" class="cell-center"></td><td><input type="text" value="No" class="cell-center"></td><td><input type="text" value="1" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value=""></td><td><input type="text" value="S05" class="cell-center"></td></tr>
-                <tr><td>5</td><td><input type="text" value="10. Kerbs / Sidewalks"></td><td><input type="text" value="BA" class="cell-center"></td><td><input type="text" value="363. Install kerbs or berms"></td><td><input type="text" value="4" class="cell-center"></td><td><input type="text" value="m" class="cell-center"></td><td><input type="text" value="R" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value="LOOSE CONCRETE BLOCKS AT ABUTMENTS"></td><td><input type="text" value="S08" class="cell-center"></td></tr>
-                <tr><td>6</td><td><input type="text" value="10. Kerbs / Sidewalks"></td><td><input type="text" value="AS" class="cell-center"></td><td><input type="text" value="118. Repair spall (including honeycombing)"></td><td><input type="text" value="5" class="cell-center"></td><td><input type="text" value="L" class="cell-center"></td><td><input type="text" value="R" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value=""></td><td><input type="text" value="S09" class="cell-center"></td></tr>
-                <tr><td>7</td><td><input type="text" value="17. Expansion Joints"></td><td><input type="text" value="PP, BA" class="cell-center"></td><td><input type="text" value="313. Repair concrete nosing"></td><td><input type="text" value="18" class="cell-center"></td><td><input type="text" value="m" class="cell-center"></td><td><input type="text" value="2" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value=""></td><td><input type="text" value="S06" class="cell-center"></td></tr>
-                <tr><td>8</td><td><input type="text" value="17. Expansion Joints"></td><td><input type="text" value="AP, BA" class="cell-center"></td><td><input type="text" value="306. New asphalt plug joint"></td><td><input type="text" value="18" class="cell-center"></td><td><input type="text" value="m" class="cell-center"></td><td><input type="text" value="2" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value=""></td><td><input type="text" value="S07" class="cell-center"></td></tr>
-                <tr><td>9</td><td><input type="text" value="21. Miscellaneous Items"></td><td><input type="text" value="BA" class="cell-center"></td><td><input type="text" value="620. Install structure number plate"></td><td><input type="text" value="2" class="cell-center"></td><td><input type="text" value="No" class="cell-center"></td><td><input type="text" value="2" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value="NO STRUCTURE NUMBER"></td><td><input type="text" value="S04" class="cell-center"></td></tr>
-                <tr><td>10</td><td><input type="text" value="21. Miscellaneous Items"></td><td><input type="text" value="BA" class="cell-center"></td><td><input type="text" value="617. Replace road signs"></td><td><input type="text" value="0.5" class="cell-center"></td><td><input type="text" value="m2" class="cell-center"></td><td><input type="text" value="1" class="cell-center"></td><td><input type="text" value="N" class="cell-center"></td><td><input type="text" value="NO RIVER NAME BOARDS"></td><td><input type="text" value="S03" class="cell-center"></td></tr>
+                <tr><td>1</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>2</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>3</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>4</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>5</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>6</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>7</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>8</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>9</td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
+                <tr><td>10</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" ></td><td><input type="text" class="cell-center"></td></tr>
             </tbody>
         </table>
 
@@ -274,11 +275,17 @@
             </tr>
             <tr>
                 <th>Special Field Requirements</th>
-                <td><input type="text" value="None"></td>
+                <td><input type="text"></td>
             </tr>
             <tr>
                 <th>Inspector's Comments</th>
-                <td><textarea rows="1" style="resize: none;">Overall structure stable. Waterways require scheduled clearing of debris; guardrail structural posts require immediate maintenance.</textarea></td>
+                <td>
+                    <textarea 
+                        rows="1" 
+                        style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
+                        oninput="autoGrow(this)">
+                    </textarea>
+                </td>
             </tr>
         </table>
 

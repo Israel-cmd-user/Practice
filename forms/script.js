@@ -31,3 +31,38 @@
             XLSX.utils.book_append_sheet(workbook, worksheet, "Inspection Summary");
             XLSX.writeFile(workbook, "STRUMAN-B0003-Report.xlsx");
         }
+
+  
+        function populateCurrentDateTime() {
+            const now = new Date();
+
+            // Zero-pad single digits (e.g., 5 becomes 05)
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = now.getFullYear();
+
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            // Assemble into DD/MM/YYYY HH:MM:SS format
+            const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+            // Inject into the text input
+            document.getElementById('printDate').value = formattedDateTime;
+        }
+
+        // Run the function immediately when the page loads
+        window.onload = populateCurrentDateTime;
+
+        function autoGrow(element) {
+            element.style.height = "auto";
+            element.style.height = element.scrollHeight + "px";
+            
+            // Show scrollbar only if text exceeds max height
+            if (element.scrollHeight > element.clientHeight) {
+                element.style.overflowY = "auto";
+            } else {
+                element.style.overflowY = "hidden";
+            }
+        }
