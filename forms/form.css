@@ -3,6 +3,8 @@
             --border-color: #64748b;
             --bg-light: #f8fafc;
             --header-bg: #e2e8f0;
+            --border-color: #000000;
+            --thin-border: 1px solid #000000;
         }
 
         body {
@@ -69,7 +71,6 @@
             padding: 3px 8px;
             font-weight: 600;
             font-size: 0.8rem;
-            text-transform: uppercase;
             margin-top: 6px;
             margin-bottom: 4px;
         }
@@ -89,6 +90,10 @@
             background-color: var(--header-bg);
             font-weight: 600;
             color: #1e293b;
+        }
+
+        .table-container{
+            overflow-x: auto;
         }
 
         /* Seamless Interactive Form Elements */
@@ -145,21 +150,56 @@
             gap: 10px;
         }
 
-        /* Ultra-dense Footer Legend Footnote */
         .legend-box {
             margin-top: 6px;
-            border: 1px solid var(--border-color);
-            padding: 6px;
+            border: var(--thin-border);
             font-size: 9px;
-            background-color: #f8fafc;
+            background-color: #ffffff;
             line-height: 1.3;
+            font-family: sans-serif;
         }
+
+        .legend-header {
+            text-align: center;
+            font-weight: bold;
+            border-bottom: var(--thin-border);
+            padding: 4px 0;
+        }
+
+        /* 21-column matrix grid without gaps so borders touch flawlessly */
         .legend-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 3px;
+            grid-template-columns: repeat(21, minmax(0, 1fr));
+            text-align: center;
         }
+
+        /* Universal cell styling for perfect alignment and thin borders */
+        .legend-grid > div {
+            padding: 4px 2px;
+            border-bottom: var(--thin-border);
+            border-right: var(--thin-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Remove bottom border on the very last row */
+        .legend-grid > div:nth-last-child(-n+21) {
+            border-bottom: none;
+        }
+
+        /* Category Title Styling */
+        .cat-title {
+            font-weight: bold; 
+        }
+        
+        /* Spans */
+        .cat-d { grid-column: span 7; }
+        .cat-e { grid-column: span 4; }
+        .cat-r { grid-column: span 4; }
+        .cat-u { grid-column: span 6; } */
+
+        .legend-grid > div:nth-child(21) { border-right: none; } 
 
         /* Print Media Target Settings to Enforce Page Isolation */
         @media print {

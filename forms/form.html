@@ -55,11 +55,15 @@
                     <tr><th style="width:35%;">Inspection Type</th><td><input type="text"></td></tr>
                     <tr><th>Inspector Name</th><td><input type="text"></td></tr>
                     <tr><th>Firm</th><td>
-                        <select style="width:50px; font-weight:bold;">
-                            <option value="N" selected>Smec</option>
-                            <option value="Y">Sce</option>
+                        <select style="width:100%;">
+                            <option value="" disabled selected hidden></option>
+                            <option >Smec</option>
+                            <option >Sce</option>
                         </select></td></tr>
-                    <tr><th>Date</th><td><input type="date"></td></tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><input type="date" id="currentDateInput" style="border: none; width: 100%;"></td>
+                    </tr>
                 </table>
             </div>
             <div>
@@ -67,18 +71,24 @@
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
                     <tr><th>Size Category</th><td><input type="text"></td></tr>
-                    <tr><th rowspan="2">GPS Coordinates</th><td>Lat: <input type="text" style="width:75%; display:inline-block;"></td></tr>
-                    <tr><td>Lon: <input type="text" style="width:75%; display:inline-block;"></td></tr>
+                    <tr><th rowspan="2">GPS Coordinates</th><td>Lat: <input type="text" id="lat" readonly style="width:75%; display:inline-block;"></td></tr>
+                    <tr><td>Lon: <input type="text" id="lon" readonly style="width:75%; display:inline-block;"></td></tr>
                 </table>
             </div>
         </div>
 
         <div style="display: grid; grid-template-columns: 6.5fr 3.5fr; gap: 10px;">
-            <div>
+            <div class="table-container">
                 <div class="section-title">Deck Lengths (m)</div>
                 <table class="form-grid cell-center">
                     <tr>
-                        <th>Span</th><th>AS</th><th>S4-S6</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th>
+                        <th>Span</th>
+                        <th><input type="text" placeholder="-"></th>
+                        <th><input type="text" placeholder="-"></th>
+                        <th><input type="text" placeholder="-"></th>
+                        <th><input type="text" placeholder="-"></th>
+                        <th><input type="text" placeholder="-"></th>
+                        <th><input type="text" placeholder="-"></th>
                     </tr>
                     <tr>
                         <th>Length</th>
@@ -102,22 +112,26 @@
         <div class="grid-2col">
             <div>
                 <div class="section-title">Location Details</div>
-                <table class="form-grid">
+                <table class="form-grid" style="text-align: left;">
                     <tr><th style="width:35%;">Road Number</th><td><input type="text"></td></tr>
                     <tr><th>Road km / Chainage</th><td><input type="text"></td></tr>
                     <tr><th>Maintenance Region</th><td><input type="text"></td></tr>
                     <tr><th>Feature Crossed</th><td><input type="text"></td></tr>
                     <tr><th>Feature Name</th><td><input type="text" va style="font-weight:bold;"></td></tr>
+                    <tr><th></th><td><input type="text"></td></tr>
+                    <tr><th></th><td><input type="text"></td></tr>
                 </table>
             </div>
             <div>
                 <div class="section-title">Structure Information</div>
-                <table class="form-grid">
+                <table class="form-grid" style="text-align: left;">
                     <tr><th style="width:40%;">Bridge Type</th><td><input type="text"></td></tr>
                     <tr><th>Year constructed</th><td><input type="text"></td></tr>
                     <tr><th>Bridge orientation</th><td><input type="text"></td></tr>
                     <tr><th>No of spans</th><td><input type="number"></td></tr>
                     <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
+                    <tr><th>Width between kerbs</th><td><input type="number"></td></tr>
+                    <tr><th>Angle of skew</th><td><input type="number"></td></tr>
                 </table>
             </div>
         </div>
@@ -240,7 +254,7 @@
                 <col style="width: 6%;">
                 <col style="width: 5%;">
                 <col style="width: 5%;">
-                <col style="width: 18;">
+                <col style="width: 18%;">
                 <col style="width: 6%;">
             </colgroup>
             <thead>
@@ -267,8 +281,9 @@
             <tr>
                 <th style="width: 25%;">Further Inspection Needed?</th>
                 <td>
-                    <select style="width:50px; font-weight:bold;">
-                        <option value="N" selected>No</option>
+                    <select style="width: 100%; ">
+                        <option value=""></option>
+                        <option value="N">No</option>
                         <option value="Y">Yes</option>
                     </select>
                 </td>
@@ -290,13 +305,14 @@
         </table>
 
         <div class="legend-box">
-            <strong>STRUMAN EVALUATION DEFINITIONS REFERENCE DIAGRAM MATRIX</strong>
-            <div class="legend-grid">
-                <div><strong>D - DEGREE</strong><br>0=None; 1=Minor; 2=Fair; 3=Poor; 4=Severe</div>
-                <div><strong>E - EXTENT</strong><br>1=Local; 2=&gt;Local; 3=&lt;Gnl; 4=General</div>
-                <div><strong>R - RELEVANCY</strong><br>1=Min; 2=Moderate; 3=Major; 4=Critical</div>
-                <div><strong>U - URGENCY</strong><br>R=Record; M=Monitor; 1=Routine; 2=ASAP</div>
-            </div>
+    <div class="legend-header">EVALUATION DEFINITIONS REFERENCE DIAGRAM MATRIX</div>
+        <div class="legend-grid">
+            <div class="cat-title cat-d">D - DEGREE</div>
+            <div class="cat-title cat-e">E - EXTENT</div>
+            <div class="cat-title cat-r">R - RELEVANCY</div>
+            <div class="cat-title cat-u">U - URGENCY</div>
+
+            <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> </div>
         </div>
     </div>
 

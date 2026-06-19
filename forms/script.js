@@ -55,6 +55,25 @@
         // Run the function immediately when the page loads
         window.onload = populateCurrentDateTime;
 
+        function populateCurrentDate() {
+        const now = new Date();
+
+        // Extract components
+        const year = now.getFullYear();
+        // Months are 0-indexed, so add 1. Pad with a leading zero if needed.
+        const month = String(now.getMonth() + 1).padStart(2, '0'); 
+        const day = String(now.getDate()).padStart(2, '0');
+
+        // Assemble into the mandatory HTML5 YYYY-MM-DD format
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // Inject into the date input field
+        document.getElementById('currentDateInput').value = formattedDate;
+        }
+
+        // Example usage: Run it when the page loads
+        window.addEventListener('DOMContentLoaded', populateCurrentDate);
+
         function autoGrow(element) {
             element.style.height = "auto";
             element.style.height = element.scrollHeight + "px";
@@ -64,5 +83,27 @@
                 element.style.overflowY = "auto";
             } else {
                 element.style.overflowY = "hidden";
+            }
+        }
+
+        
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+        }
+        }
+
+        function showPosition(position) {
+            document.getElementById("lat").value = position.coords.latitude;
+            document.getElementById("lon").value = position.coords.longitude;
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
             }
         }
