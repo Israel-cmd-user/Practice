@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRUMAN Bridge Inspection Sheet - B0003</title>
+    <title>Bridge Inspection Sheet</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,9 +14,9 @@
     <div class="action-bar" id="no-print-actions">
         <h2>Bridge Inspections</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf">Export to PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel">Export to Excel</button>
-            <button onclick="saveFile()" class="btn btn-save">Save</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i>Export to PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i>Export to Excel</button>
+            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
         </div>
     </div>
 
@@ -71,8 +71,8 @@
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
                     <tr><th>Size Category</th><td><input type="text"></td></tr>
-                    <tr><th rowspan="2">GPS Coordinates</th><td>Lat: <input type="text" id="lat" readonly style="width:75%; display:inline-block;"></td></tr>
-                    <tr><td>Lon: <input type="text" id="lon" readonly style="width:75%; display:inline-block;"></td></tr>
+                    <tr><th>No of spans</th><td><input type="text"></td></tr>
+                    <tr><th>GPS Coordinates</th><td>Lon: <input type="text" id="lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="lat" style="width:30%; display:inline-block;"></td></tr>
                 </table>
             </div>
         </div>
@@ -102,7 +102,7 @@
                 <table class="form-grid cell-center">
                     <tr><th>Position</th><th>Minimum Clearance</th></tr>
                     <tr>
-                        <td><input type="text" value="Abutment"></td>
+                        <td><input type="text" value=""></td>
                         <td><input type="text"></td>
                     </tr>
                 </table>

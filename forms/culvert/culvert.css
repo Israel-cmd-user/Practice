@@ -1,0 +1,400 @@
+ :root {
+            --primary-color: #0f1729;
+            --border-color: #64748b;
+            --bg-light: #f8fafc;
+            --header-bg: #e2e8f0;
+            --border-color: #000000;
+            --thin-border: 1px solid #000000;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cbd5e1;
+            margin: 0;
+            padding: 10px;
+            color: #0f172a;
+        }
+
+        /* Interactive Controls Sticky Header */
+        .action-bar {
+            max-width: 1020px;
+            margin: 0 auto 10px auto;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .action-bar h2 { margin: 0; font-size: 1rem; color: var(--primary-color); }
+        .btn-group { display: flex; gap: 8px; }
+        .btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-pdf { background-color: #ef4444; color: white; }
+        .btn-excel { background-color: #22c55e; color: white; }
+        .btn-save {background-color: #0f1729; color: #ffffff;}
+
+        /* Strict Single-Page Print Layout Container */
+        .document-page {
+            max-width: 1020px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px 25px;
+            box-sizing: border-box;
+            font-size: 11px; /* Scaled down for 1-page constraints */
+            line-height: 1.2;
+        }
+
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 8px;
+        }
+        .doc-header-left h1 { font-size: 1.2rem; margin: 0 0 2px 0; color: var(--primary-color); }
+        .doc-header-left h3 { font-size: 0.9rem; margin: 0; font-weight: 600; }
+        .doc-header-right { text-align: right; font-size: 0.75rem; color: #475569; }
+
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 8px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* Micro Form Grids */
+        table.form-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+        table.form-grid th, table.form-grid td {
+            border: 1px solid var(--border-color);
+            padding: 3px 10px;
+            vertical-align: middle;
+        }
+        table.form-grid th {
+            background-color: var(--header-bg);
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .table-container{
+            overflow-x: auto;
+        }
+
+        /* Seamless Interactive Form Elements */
+        input[type="text"], input[type="number"], select, textarea {
+            width: 100%;
+            border: 1px solid transparent;
+            background-color: transparent;
+            padding: 1px 2px;
+            font-size: 11px;
+            font-family: inherit;
+            box-sizing: border-box;
+            color: #000;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            outline: none;
+        }
+        .filled { font-weight: 600; }
+        .cell-center { text-align: center !important; }
+        .cell-center input { text-align: center; }
+
+        /* Compact Ratings Matrix */
+        /* .matrix-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        } */
+        .matrix-table th { 
+            text-align: center;
+             font-size: 10px; 
+             padding: 2px; 
+            }
+        .matrix-table td { 
+            padding: 2px; 
+            font-size: 11px; 
+        }
+        .rating-box {
+            display: flex;
+            gap: 1px;
+            justify-content: center;
+        }
+        .rating-box div {
+            display: flex;
+            align-items: center;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+        }
+        .rating-box input {
+            width: 16px;
+            height: 14px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        /* Meta Grid Splits */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .legend-box {
+            margin-top: 6px;
+            border: var(--thin-border);
+            font-size: 9px;
+            background-color: #ffffff;
+            line-height: 1.3;
+            font-family: sans-serif;
+        }
+
+        .legend-header {
+            text-align: center;
+            font-weight: bold;
+            border-bottom: var(--thin-border);
+            padding: 4px 0;
+        }
+
+        /* 21-column matrix grid without gaps so borders touch flawlessly */
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(21, minmax(0, 1fr));
+            text-align: center;
+        }
+
+        /* Universal cell styling for perfect alignment and thin borders */
+        .legend-grid > div {
+            padding: 4px 2px;
+            border-bottom: var(--thin-border);
+            border-right: var(--thin-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Remove bottom border on the very last row */
+        .legend-grid > div:nth-last-child(-n+21) {
+            border-bottom: none;
+        }
+
+        /* Category Title Styling */
+        .cat-title {
+            font-weight: bold; 
+        }
+        
+        /* Spans */
+        .cat-d { grid-column: span 7; }
+        .cat-e { grid-column: span 4; }
+        .cat-r { grid-column: span 4; }
+        .cat-u { grid-column: span 6; } */
+
+        .legend-grid > div:nth-child(21) { border-right: none; }
+        
+        /* Photo Column Elements */
+        .photo-cell {
+            padding: 0 !important;
+            position: relative;
+        }
+        .photo-file-input {
+            display: none !important;
+        }
+        .photo-manage-btn {
+            background: transparent;
+            border: none;
+            width: 100%;
+            height: 100%;
+            min-height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+        .photo-counter {
+            font-size: 10px;
+            background: #64748b;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .photo-counter.has-photos {
+            background: #2563eb; /* Primary theme highlight when image exists */
+        }
+
+        /* Modal Management Interface */
+        .modal-overlay {
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 480px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .close-modal-btn {
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #94a3b8;
+        }
+        .close-modal-btn:hover { color: #334155; }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            border: none;
+        }
+        .btn-add-photo { background: #10b981; color: white; }
+        .btn-danger { background: #ef4444; color: white; }
+
+        /* Image Gallery Grid */
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+            gap: 12px;
+            max-height: 260px;
+            overflow-y: auto;
+            border: 1px dashed #cbd5e1;
+            padding: 12px;
+            border-radius: 6px;
+            background: #f8fafc;
+        }
+        .thumb-wrapper {
+            position: relative;
+            width: 85px;
+            height: 85px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #000;
+        }
+        .thumb-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.2s;
+        }
+        .thumb-wrapper img:hover { opacity: 0.85; }
+        .thumb-checkbox {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            z-index: 5;
+        }
+        .thumb-delete-btn {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background: rgba(239, 68, 68, 0.95);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        /* Fullscreen Immersive Viewer Styling */
+        .viewer-overlay {
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .viewer-content {
+            max-width: 92%;
+            max-height: 92%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        }
+        .close-viewer {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 38px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Style adjustments for the Font Awesome image icon */
+        .photo-manage-btn i {
+            font-size: 15px;
+            color: #64748b; /* Default muted gray */
+            transition: color 0.2s ease;
+        }
+
+        /* If the row has active attachments, highlight the icon color along with the badge */
+        .photo-manage-btn:has(.has-photos) i {
+            color: #2563eb; /* Primary active blue */
+            font-weight: 600; /* Makes the regular icon path slightly bolder when active */
+        }
+
+        /* Print Media Target Settings to Enforce Page Isolation */
+        @media print {
+            body { background: white; padding: 0; }
+            #no-print-actions { display: none !important; }
+            .document-page { box-shadow: none; padding: 0; width: 100%; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
