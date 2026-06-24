@@ -25,8 +25,8 @@ def organise_by_db_names():
             d.road_no,
             d.video_source,
             COALESCE(c.defect_class_name, CAST(d.defect_class_id AS VARCHAR)) AS folder_name
-        FROM wip_2026_04.road_defects d
-        LEFT JOIN wip_2026_04.defect_classes c
+        FROM wip_current.road_defects d
+        LEFT JOIN wip_current.defect_classes c
             ON d.defect_class_id = c.defect_class_id 
         WHERE d.inspection_round = %s;
         """
