@@ -190,9 +190,15 @@ function closePhotoModal() {
     activeRowId = null;
 }
 
-function triggerFileInput() {
+function triggerCameraInput() {
     if (!activeRowId) return;
-    const activeTargetInput = document.querySelector(`tr[data-row-id="${activeRowId}"] .photo-file-input`);
+    const activeTargetInput = document.querySelector(`tr[data-row-id="${activeRowId}"] .photo-camera-input`);
+    if (activeTargetInput) activeTargetInput.click();
+}
+
+function triggerGalleryInput() {
+    if (!activeRowId) return;
+    const activeTargetInput = document.querySelector(`tr[data-row-id="${activeRowId}"] .photo-gallery-input`);
     if (activeTargetInput) activeTargetInput.click();
 }
 

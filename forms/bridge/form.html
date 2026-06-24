@@ -381,12 +381,20 @@
                 <h3>Media Attachments - Image <span id="modal-item-id">0</span></h3>
                 <button type="button" class="close-modal-btn" onclick="closePhotoModal()">&times;</button>
             </div>
+            
             <div class="modal-actions">
-                <button type="button" class="btn btn-add-photo" onclick="triggerFileInput()"> Upload / Capture</button>
-                <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()"> Delete Selected</button>
+                <button type="button" class="btn btn-add-photo" onclick="triggerCameraInput()">
+                    <i class="fa-solid fa-camera"></i> Take Photo
+                </button>
+                <button type="button" class="btn btn-add-photo" onclick="triggerGalleryInput()">
+                    <i class="fa-solid fa-images"></i> Photo Gallery
+                </button>
+                <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()">
+                    Delete Selected
+                </button>
             </div>
-            <div id="modal-gallery" class="modal-gallery">
-                </div>
+            
+            <div id="modal-gallery" class="modal-gallery"></div>
         </div>
     </div>
 
