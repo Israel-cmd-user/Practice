@@ -73,7 +73,7 @@
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
                     <tr><th>Size Category</th><td><input type="text"></td></tr>
-                    <tr><th>No of spans</th><td><input type="text"></td></tr>
+                    <tr><th>No of cells</th><td><input type="text"></td></tr>
                     <tr><th>GPS Coordinates</th><td>Lon: <input type="text" id="lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="lat" style="width:30%; display:inline-block;"></td></tr>
                 </table>
             </div>
@@ -84,7 +84,7 @@
                 <div class="section-title">Cell widths (m)</div>
                 <table class="form-grid cell-center">
                     <tr>
-                        <th>Span</th>
+                        <th>Cell</th>
                         <th><input type="text" placeholder="-"></th>
                         <th><input type="text" placeholder="-"></th>
                         <th><input type="text" placeholder="-"></th>
@@ -178,33 +178,51 @@
             </div>
 
             <div class="section-title">Specific Positions</div>
-        <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
-            <colgroup>
-                <col style="width: 5%;">
-                <col style="width: 12%;">
-                <col style="width: 12%;">
-                <col style="width: 12%;">
-                <col style="width: 12%;">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>Cell</th><th>10. Walls</th><th>11. Top Slab</th><th>12. Invert Slab</th><th>13. Cell Deformation</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <tr data-row-id="1"><td>1</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="2"><td>2</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="3"><td>3</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="4"><td>4</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="5"><td>5</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="6"><td>6</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="7"><td>7</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="8"><td>8</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="9"><td>9</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-                <tr data-row-id="10"><td>10</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td></tr>
-            </tbody>
-        </table>
+                <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed; width: 100%;">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        
+                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                        
+                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                        
+                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                        
+                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Cell</th>
+                            <th colspan="3">10. Walls</th>
+                            <th colspan="3">11. Top Slab</th>
+                            <th colspan="3">12. Invert Slab</th>
+                            <th colspan="3">13. Cell Deformation</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>D</th><th>E</th><th>R</th>
+                            <th>D</th><th>E</th><th>R</th>
+                            <th>D</th><th>E</th><th>R</th>
+                            <th>D</th><th>E</th><th>R</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-row-id="1">
+                            <td>1</td>
+                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                            <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
+                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                        </tr>
+                        <tr data-row-id="2">
+                            <td>2</td>
+                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                            <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
+                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                        </tr>
+                        </tbody>
+                </table>
 
         <div class="section-title">Remedial Work Recommendations</div>
         <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">

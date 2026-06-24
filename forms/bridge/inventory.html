@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="form.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
@@ -350,9 +351,49 @@
             </table>
 
         </form>
+
+        <div class="section-title">Inspector's Assessment & Comments</div>
+            <table class="form-grid">
+                <tr>
+                    <th style="width: 25%;">Further Inspection Needed?</th>
+                    <td>
+                        <select style="width: 100%; ">
+                            <option value=""></option>
+                            <option value="N">No</option>
+                            <option value="Y">Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Special Field Requirements</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Inspector's Comments</th>
+                    <td>
+                        <textarea 
+                            rows="1" 
+                            style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
+                            oninput="autoGrow(this)">
+                        </textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="legend-box">
+                <div class="legend-header">EVALUATION DEFINITIONS REFERENCE DIAGRAM MATRIX</div>
+                <div class="legend-grid">
+                    <div class="cat-title cat-d">D - DEGREE</div>
+                    <div class="cat-title cat-e">E - EXTENT</div>
+                    <div class="cat-title cat-r">R - RELEVANCY</div>
+                    <div class="cat-title cat-u">U - URGENCY</div>
+
+                    <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
+                </div>
+        </div>
     </div>
 
-    <script src="/forms/script.js"></script>
+    <script src="script.js"></script>
     <script src="script_inv.js"></script>
 </body>
 </html>

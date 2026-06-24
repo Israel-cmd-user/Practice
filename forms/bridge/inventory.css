@@ -21,7 +21,6 @@ body {
     margin: 0 auto 10px auto;
     background: white;
     padding: 8px 15px;
-    border-radius: 6px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     display: flex;
     justify-content: space-between;
@@ -179,7 +178,6 @@ input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:foc
     border: var(--thin-border);
     padding: 12px;
     margin-top: 8px;
-    border-radius: 4px;
     cursor: pointer;
     position: relative;
     transition: border-color 0.15s ease;
