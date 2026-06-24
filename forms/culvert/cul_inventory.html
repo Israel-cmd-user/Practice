@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Major Culvert Inventory Assessment</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="/bridge/form.css">
     <link rel="stylesheet" href="/bridge/inventory.css">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -36,7 +38,7 @@
         <table class="form-grid">
             <tr>
                 <td rowspan="2" style="width: 25%; text-align: center; vertical-align: middle;">
-                    <img src="/logo.png" style="width: 90%; margin: 5%;"/>
+                    <img src="/logo.png" style="width: 90%; margin: 5%;" alt="Logo"/>
                 </td>
                 <th style="width: 20%;">Structure Type</th>
                 <th style="width: 15%;">Structure Number</th>
@@ -48,18 +50,15 @@
                 <td><input type="text" class="filled" style="font-weight: bold; color: var(--primary-color);"></td>
                 <td><input type="text" class="filled"></td>
                 <td><input type="text" class="filled" style="color: red; font-weight: bolder; font-size: larger;"></td>
-           
             </tr>
         </table>
 
         <div class="section-title">1. Field Geospatial Preview</div>
         <div class="location-preview-zone" id="gps-capture-panel" title="Click panel space to synchronize location telemetry">
-            
             <div class="telemetry-controls">
                 <div class="telemetry-instruction">
                     <i class="fa-solid fa-satellite-dish"></i> Click panel to synchronise live coordinate preview
                 </div>
-                
                 <div class="telemetry-fields">
                     <div class="field-group">
                         <label for="geo-lat">Latitude</label>
@@ -70,10 +69,8 @@
                         <input type="text" id="geo-lon" name="longitude" readonly placeholder="Awaiting alignment...">
                     </div>
                 </div>
-                
                 <div class="telemetry-status" id="geo-status-indicator">Status: Telemetry engine offline / idle</div>
             </div>
-
             <div class="map-preview-box">
                 <div id="live-mini-map"></div>
                 <i class="fa-solid fa-location-dot watermark-icon" id="map-watermark"></i>
@@ -81,9 +78,7 @@
         </div>
 
         <form id="assessment-data-form">
-
             <div class="section-title">2. Dimensions, Geometry and Road Clearances</div>
-            
             <table class="form-grid">
                 <tbody>
                     <tr>
@@ -153,22 +148,16 @@
                     </tr>
                     <tr>
                         <th>Overall Structure Length (m)</th>
-                        <td>
-                            <input type="number" step="any" name="overall_length" placeholder="Eg. 123.56" required>
-                        </td>
+                        <td><input type="number" step="any" name="overall_length" placeholder="Eg. 123.56" required></td>
                         <th>Overall Structure Width (m)</th>
-                        <td>
-                            <input type="number" step="any" name="overall_width" placeholder="Eg. 12.45" required>
-                        </td>
+                        <td><input type="number" step="any" name="overall_width" placeholder="Eg. 12.45" required></td>
                     </tr>
                     <tr>
                         <th>Minimum Clear Width (m)</th>
-                        <td>
-                            <input type="number" step="any" name="width_between_kerb" placeholder="Eg. 11.20" required>
-                        </td>
+                        <td><input type="number" step="any" name="width_between_kerb" placeholder="Eg. 11.20" required></td>
                         <th>Overall Cell Length (m)</th>
                         <td>
-                            <select name="vertical_alignment" required>
+                            <select name="overall_cell_length_profile" required>
                                 <option value="">Select profile...</option>
                                 <option value="flat">Flat / Level</option>
                                 <option value="sag">Sag Curve</option>
@@ -176,7 +165,6 @@
                             </select>
                         </td>
                     </tr>
-
                     <tr>
                         <th>Vertical Alignment</th>
                         <td>
@@ -195,7 +183,6 @@
                             </select>
                         </td>
                     </tr>
-
                     <tr>
                         <th>Camber or Crossfall</th>
                         <td>
@@ -210,13 +197,13 @@
                     </tr>
                     <tr>
                         <th>Maximum Fill Height (m)</th>
-                        <td><input type="number" step="any" name="max_pier_height" placeholder="Eg. 12.15"></td>
+                        <td><input type="number" step="any" name="max_fill_height" placeholder="Eg. 12.15"></td>
                         <th>Max Cell Size Width (m)</th>
-                        <td><input type="number" step="any" name="max_abutment_height" placeholder="Eg. 8.45"></td>
+                        <td><input type="number" step="any" name="max_cell_width" placeholder="Eg. 8.45"></td>
                     </tr>
                     <tr>
                         <th>Minimum Cell Size Height (m)</th>
-                        <td><input type="number" step="any" name="min_vertical_clearance" placeholder="Eg. 5.20"></td>
+                        <td><input type="number" step="any" name="min_cell_height" placeholder="Eg. 5.20"></td>
                         <th>Position of Minimum Vertical Clearance</th>
                         <td>
                             <div class="rating-box">
@@ -261,67 +248,8 @@
                         <th style="width: 10%; text-align: center;">Media</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>View 1: Structure inlet in evaluation (show total number of cells)</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-1" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-1').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                        <td>View 2: Structure from outlet in elevation (show total number of cells and apron slabs)</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-2" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-2').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>View 3: Structure from upper (in direction of increasing chainage)</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-3" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-3').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                        <td>View 4: Structure from oppisite end of approach (in direction of decreasing chainage)</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-4" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-4').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>View 5: View taken from the top of fill of feature crossed (road or upstream river view)</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-5" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-5').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                        <td>View 6: View taken from the top of fill of fature crossed (road or downstream river view)</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-6" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-6').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>View 7: View of inside of bridge barrel showing roof walls & floor</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-7" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-7').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                        <td>View 8: Structure number</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-8" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-8').click()"><i class="fa-regular fa-image"></i><span class="photo-counter">0</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">View 9: Any other salient feature</td>
-                        <td class="photo-cell">
-                            <input type="file" id="p-img-9" class="photo-file-input" multiple>
-                            <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-9').click()">
-                                <i class="fa-regular fa-image"></i><span class="photo-counter">0</span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="photo-inventory-grid"></tbody>
             </table>
-
         </form>
         
         <div class="section-title">Inspector's Assessment & Comments</div>
@@ -329,7 +257,7 @@
             <tr>
                 <th style="width: 25%;">Further Inspection Needed?</th>
                 <td>
-                    <select style="width: 100%; ">
+                    <select style="width: 100%;">
                         <option value=""></option>
                         <option value="N">No</option>
                         <option value="Y">Yes</option>
@@ -363,10 +291,34 @@
                 <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
             </div>
         </div>
-
     </div>
 
-    <script src="/forms/script.js"></script>
-    <script src="script_inv.js"></script>
+    <div id="photo-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Media Attachments - View <span id="modal-item-id">0</span></h3>
+                <button type="button" class="close-modal-btn" onclick="closePhotoModal()">&times;</button>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-add-photo" onclick="triggerCameraInput()">
+                    <i class="fa-solid fa-camera"></i> Take Photo
+                </button>
+                <button type="button" class="btn btn-add-photo" onclick="triggerGalleryInput()">
+                    <i class="fa-solid fa-images"></i> Photo Gallery
+                </button>
+                <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()">
+                    Delete Selected
+                </button>
+            </div>
+            <div id="modal-gallery" class="modal-gallery"></div>
+        </div>
+    </div>
+
+    <div id="image-viewer-modal" class="viewer-overlay" style="display: none;" onclick="closeImageViewer()">
+        <span class="close-viewer">&times;</span>
+        <img class="viewer-content" id="full-screen-image" src="" alt="Inspection Zoom View">
+    </div>
+
+    <script type="module" src="/app.js"></script>
 </body>
 </html>

@@ -14,9 +14,9 @@
     <div class="action-bar" id="no-print-actions">
         <h2>Major Culvert Inspections</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i>Export to PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i>Export to Excel</button>
-            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export to PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export to Excel</button>
+            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save</button>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
         <table class="form-grid">
             <tr>
                 <td rowspan="2" style="width: 25%; text-align: center; vertical-align: middle;">
-                    <img src="/logo.png" style="width: 90%; margin: 5%;"/>
+                    <img src="/logo.png" style="width: 90%; margin: 5%;" alt="Logo"/>
                 </td>
                 <th style="width: 20%;">Structure Type</th>
                 <th style="width: 15%;">Structure Number</th>
@@ -48,7 +48,6 @@
                 <td><input type="text" class="filled" style="font-weight: bold; color: var(--primary-color);"></td>
                 <td><input type="text" class="filled"></td>
                 <td><input type="text" class="filled" style="color: red; font-weight: bolder; font-size: larger;"></td>
-           
             </tr>
         </table>
 
@@ -61,8 +60,8 @@
                     <tr><th>Firm</th><td>
                         <select style="width:100%;">
                             <option value="" disabled selected hidden></option>
-                            <option >Smec Namibia</option>
-                            <option >Sce</option>
+                            <option>Smec Namibia</option>
+                            <option>Sce</option>
                         </select></td></tr>
                     <tr>
                         <th>Date</th>
@@ -169,62 +168,58 @@
                         <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                         <td class="cell-center">E2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                       <tr><td>05. Waterway</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                        <tr><td>06. Road slabs</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                        <tr><td>07. Road Joints</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    </tr>
+                    <tr><td>05. Waterway</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>06. Road slabs</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>07. Road Joints</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                     <tr><td>08. Guardrails</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                     <tr><td>09. Parapets/Handrails</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                     <tr><td>14. Miscellaneous Items</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                 </table>
             </div>
+        </div>
 
-            <div class="section-title">Specific Positions</div>
-                <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed; width: 100%;">
-                    <colgroup>
-                        <col style="width: 5%;">
-                        
-                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
-                        
-                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
-                        
-                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
-                        
-                        <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>Cell</th>
-                            <th colspan="3">10. Walls</th>
-                            <th colspan="3">11. Top Slab</th>
-                            <th colspan="3">12. Invert Slab</th>
-                            <th colspan="3">13. Cell Deformation</th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th>D</th><th>E</th><th>R</th>
-                            <th>D</th><th>E</th><th>R</th>
-                            <th>D</th><th>E</th><th>R</th>
-                            <th>D</th><th>E</th><th>R</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-row-id="1">
-                            <td>1</td>
-                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                            <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
-                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                        </tr>
-                        <tr data-row-id="2">
-                            <td>2</td>
-                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                            <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
-                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                        </tr>
-                        </tbody>
-                </table>
+        <div class="section-title">Specific Positions</div>
+        <table class="form-grid" id="specific-positions-table" style="font-size:10px; table-layout:fixed; width: 100%;">
+            <colgroup>
+                <col style="width: 5%;">
+                <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+                <col style="width: 2.3%;"><col style="width: 2.3%;"><col style="width: 2.3%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Cell</th>
+                    <th colspan="3">10. Walls</th>
+                    <th colspan="3">11. Top Slab</th>
+                    <th colspan="3">12. Invert Slab</th>
+                    <th colspan="3">13. Cell Deformation</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>D</th><th>E</th><th>R</th>
+                    <th>D</th><th>E</th><th>R</th>
+                    <th>D</th><th>E</th><th>R</th>
+                    <th>D</th><th>E</th><th>R</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-row-id="1">
+                    <td>1</td>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                </tr>
+                <tr data-row-id="2">
+                    <td>2</td>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
 
         <div class="section-title">Remedial Work Recommendations</div>
         <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
@@ -238,7 +233,7 @@
                 <col style="width: 5%;">
                 <col style="width: 5%;">
                 <col style="width: 18%;">
-                <col style="width: 6%;">
+                <col style="width: 8%;">
             </colgroup>
             <thead>
                 <tr>
@@ -246,87 +241,77 @@
                 </tr>
             </thead>
             <tbody>
-    <tr data-row-id="1">
-        <td>1</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 1)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 1)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(1)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="2">
-        <td>2</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 2)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 2)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(2)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="3">
-        <td>3</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 3)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 3)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(3)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="4">
-        <td>4</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 4)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 4)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(4)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="5">
-        <td>5</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 5)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 5)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(5)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="6">
-        <td>6</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 6)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 6)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(6)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="7">
-        <td>7</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 7)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 7)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(7)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="8">
-        <td>8</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 8)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 8)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(8)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="9">
-        <td>9</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 9)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 9)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(9)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-    <tr data-row-id="10">
-        <td>10</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-        <td class="cell-center photo-cell">
-            <input type="file" accept="image/*" capture="environment" class="photo-camera-input" onchange="handleRowPhotoUpload(event, 10)">
-            <input type="file" accept="image/*" multiple class="photo-gallery-input" onchange="handleRowPhotoUpload(event, 10)">
-            <button type="button" class="photo-manage-btn" onclick="openPhotoManager(10)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-        </td>
-    </tr>
-</tbody>
+                <tr data-row-id="1">
+                    <td>1</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-1" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-1')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-1')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="2">
+                    <td>2</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-2" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-2')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-2')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="3">
+                    <td>3</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-3" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-3')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-3')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="4">
+                    <td>4</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-4" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-4')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-4')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="5">
+                    <td>5</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-5" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-5')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-5')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="6">
+                    <td>6</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-6" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-6')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-6')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="7">
+                    <td>7</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-7" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-7')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-7')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="8">
+                    <td>8</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-8" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-8')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-8')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="9">
+                    <td>9</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-9" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-9')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-9')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+                <tr data-row-id="10">
+                    <td>10</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
+                    <td class="photo-cell">
+                        <input type="file" id="rem-img-10" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-10')">
+                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-10')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
 
         <div class="section-title">Inspector's Assessment & Comments</div>
@@ -334,7 +319,7 @@
             <tr>
                 <th style="width: 25%;">Further Inspection Needed?</th>
                 <td>
-                    <select style="width: 100%; ">
+                    <select style="width: 100%;">
                         <option value=""></option>
                         <option value="N">No</option>
                         <option value="Y">Yes</option>
@@ -371,33 +356,31 @@
     </div>
 
     <div id="photo-modal" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3>Media Attachments - Image <span id="modal-item-id">0</span></h3>
-            <button type="button" class="close-modal-btn" onclick="closePhotoModal()">&times;</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Media Attachments - View <span id="modal-item-id">0</span></h3>
+                <button type="button" class="close-modal-btn" onclick="closePhotoModal()">&times;</button>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-add-photo" onclick="triggerCameraInput()">
+                    <i class="fa-solid fa-camera"></i> Take Photo
+                </button>
+                <button type="button" class="btn btn-add-photo" onclick="triggerGalleryInput()">
+                    <i class="fa-solid fa-images"></i> Photo Gallery
+                </button>
+                <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()">
+                    Delete Selected
+                </button>
+            </div>
+            <div id="modal-gallery" class="modal-gallery"></div>
         </div>
-        
-        <div class="modal-actions">
-            <button type="button" class="btn btn-add-photo" onclick="triggerCameraInput()">
-                <i class="fa-solid fa-camera"></i> Take Photo
-            </button>
-            <button type="button" class="btn btn-add-photo" onclick="triggerGalleryInput()">
-                <i class="fa-solid fa-images"></i> Photo Gallery
-            </button>
-            <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()">
-                Delete Selected
-            </button>
-        </div>
-        
-        <div id="modal-gallery" class="modal-gallery"></div>
     </div>
-</div>
 
     <div id="image-viewer-modal" class="viewer-overlay" style="display: none;" onclick="closeImageViewer()">
         <span class="close-viewer">&times;</span>
         <img class="viewer-content" id="full-screen-image" src="" alt="Inspection Zoom View">
     </div>
 
-    <script src="/bridge/script.js"/>
+    <script type="module" src="app.js"></script>
 </body>
 </html>

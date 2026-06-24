@@ -14,9 +14,9 @@
     <div class="action-bar" id="no-print-actions">
         <h2>Bridge Inspections Sheet</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i>Export to PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i>Export to Excel</button>
-            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i>Save</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export to PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export to Excel</button>
+            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save Progress</button>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
             </div>
             <div class="doc-header-right">
                 <strong>Print Date:</strong> 
-                <input type="text" id="printDate" style="width:140px; display:inline-block;"><br>
+                <input type="text" id="inspection-datetime" style="width:140px; display:inline-block;"><br>
                 <input type="text" value="" style="width:220px; text-align:right;">
             </div>
         </div>
@@ -36,7 +36,7 @@
         <table class="form-grid">
             <tr>
                 <td rowspan="2" style="width: 25%; text-align: center; vertical-align: middle;">
-                    <img src="/logo.png" style="width: 90%; margin: 5%;"/>
+                    <img src="/logo.png" style="width: 90%; margin: 5%;" alt="Logo"/>
                 </td>
                 <th style="width: 20%;">Structure Type</th>
                 <th style="width: 15%;">Structure Number</th>
@@ -48,7 +48,6 @@
                 <td><input type="text" class="filled" style="font-weight: bold; color: var(--primary-color);"></td>
                 <td><input type="text" class="filled"></td>
                 <td><input type="text" class="filled" style="color: red; font-weight: bolder; font-size: larger;"></td>
-           
             </tr>
         </table>
 
@@ -61,12 +60,12 @@
                     <tr><th>Firm</th><td>
                         <select style="width:100%;">
                             <option value="" disabled selected hidden></option>
-                            <option >Smec Namibia</option>
-                            <option >Sce</option>
+                            <option>Smec Namibia</option>
+                            <option>Sce</option>
                         </select></td></tr>
                     <tr>
                         <th>Date</th>
-                        <td><input type="date" id="currentDateInput" style="border: none; width: 100%;"></td>
+                        <td><input type="date" id="inspection-date" style="border: none; width: 100%;"></td>
                     </tr>
                 </table>
             </div>
@@ -76,7 +75,10 @@
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
                     <tr><th>Size Category</th><td><input type="text"></td></tr>
                     <tr><th>No of spans</th><td><input type="text"></td></tr>
-                    <tr><th>GPS Coordinates</th><td>Lon: <input type="text" id="lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="lat" style="width:30%; display:inline-block;"></td></tr>
+                    <tr>
+                        <th>GPS Coordinates</th>
+                        <td>Lon: <input type="text" id="geo-lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="geo-lat" style="width:30%; display:inline-block;"></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -213,7 +215,7 @@
                         <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                         <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                     <tr><td class="cell-center">P5</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P6</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                     <tr><td class="cell-center">P7</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P8</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                     
@@ -240,27 +242,27 @@
                         <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                         <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                     
                     <tr>
                         <td rowspan="4">16. Support Drainage</td><td class="cell-center">A1</td>
                         <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                         <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                     
                     <tr>
                         <td rowspan="4">17. Expansion Joints</td><td class="cell-center">A1</td>
                         <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                         <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
                 </table>
             </div>
 
@@ -273,30 +275,30 @@
                     </tr>
                     <tr>
                         <td rowspan="4">18. Longitudinal Members</td><td class="cell-center"><input type="text" placeholder="-"></td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
+                        <td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
                     
                     <tr>
-                        <td rowspan="4">19. Transverse Members</td><td class="cell-center"><input type="text" placeholder="-"></td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td rowspan="4">19. Transverse Members</td><td class="cell-center"><input type="number" placeholder="-"></td>
+                        <td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
+                        <td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
 
                     <tr>
-                        <td rowspan="4">20. Decks and Slabs</td><td class="cell-center"><input type="text" placeholder="-"></td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td rowspan="4">20. Decks and Slabs</td><td class="cell-center"><input type="number" placeholder="-"></td>
+                        <td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
+                        <td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
                 </table>
             </div>
         </div>
@@ -322,7 +324,7 @@
             </thead>
             <tbody>
                 <tr data-row-id="1"><td>1</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td class="cell-center photo-cell"><input type="file" accept="image/*" multiple class="photo-file-input" onchange="handleRowPhotoUpload(event, 1)"><button type="button" class="photo-manage-btn" onclick="openPhotoManager(1)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button></td></tr>
-                <tr data-row-id="2"><td>2</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td class="cell-center photo-cell"><input type="file" accept="image/*" multiple class="photo-file-input" onchange="handleRowPhotoUpload(event, 2)"><button type="button" class="photo-manage-btn" onclick="openPhotoManager(2)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button></td></tr>
+                <tr data-row-id="2"><td>2</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="number" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td class="cell-center photo-cell"><input type="file" accept="image/*" multiple class="photo-file-input" onchange="handleRowPhotoUpload(event, 2)"><button type="button" class="photo-manage-btn" onclick="openPhotoManager(2)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button></td></tr>
                 <tr data-row-id="3"><td>3</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td class="cell-center photo-cell"><input type="file" accept="image/*" multiple class="photo-file-input" onchange="handleRowPhotoUpload(event, 3)"><button type="button" class="photo-manage-btn" onclick="openPhotoManager(3)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button></td></tr>
                 <tr data-row-id="4"><td>4</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td class="cell-center photo-cell"><input type="file" accept="image/*" multiple class="photo-file-input" onchange="handleRowPhotoUpload(event, 4)"><button type="button" class="photo-manage-btn" onclick="openPhotoManager(4)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button></td></tr>
                 <tr data-row-id="5"><td>5</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td class="cell-center photo-cell"><input type="file" accept="image/*" multiple class="photo-file-input" onchange="handleRowPhotoUpload(event, 5)"><button type="button" class="photo-manage-btn" onclick="openPhotoManager(5)"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button></td></tr>
@@ -339,7 +341,7 @@
             <tr>
                 <th style="width: 25%;">Further Inspection Needed?</th>
                 <td>
-                    <select style="width: 100%; ">
+                    <select style="width: 100%;">
                         <option value=""></option>
                         <option value="N">No</option>
                         <option value="Y">Yes</option>
@@ -403,6 +405,6 @@
         <img class="viewer-content" id="full-screen-image" src="" alt="Inspection Zoom View">
     </div>
 
-    <script src="script.js"/>
+    <script type="module" src="/app.js"></script>
 </body>
 </html>
