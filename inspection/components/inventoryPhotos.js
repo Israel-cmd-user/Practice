@@ -44,25 +44,23 @@ export function initPhotoInventoryGrid() {
         const viewB = BRIDGE_INVENTORY_VIEWS[i + 1];
 
         htmlContent += `
-            <tr>
-                <td>${viewA.label}</td>
-                <td class="photo-cell">
-                    <input type="file" id="p-img-${viewA.id}" class="photo-file-input" multiple>
-                    <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-${viewA.id}').click()">
-                        <i class="fa-regular fa-image"></i><span class="photo-counter">0</span>
-                    </button>
-                </td>
-                ${viewB ? `
-                <td>${viewB.label}</td>
-                <td class="photo-cell">
-                    <input type="file" id="p-img-${viewB.id}" class="photo-file-input" multiple>
-                    <button type="button" class="photo-manage-btn" onclick="document.getElementById('p-img-${viewB.id}').click()">
-                        <i class="fa-regular fa-image"></i><span class="photo-counter">0</span>
-                    </button>
-                </td>
-                ` : `<td></td><td></td>`}
-            </tr>
-        `;
+                    <tr>
+                        <td>${viewA.label}</td>
+                        <td class="photo-cell">
+                            <button type="button" class="photo-manage-btn" onclick="openBridgePhotoModal('bridge_photo_${viewA.id}')">
+                                <i class="fa-regular fa-image"></i><span class="photo-counter" id="counter-bridge_photo_${viewA.id}">0</span>
+                            </button>
+                        </td>
+                        ${viewB ? `
+                        <td>${viewB.label}</td>
+                        <td class="photo-cell">
+                            <button type="button" class="photo-manage-btn" onclick="openBridgePhotoModal('bridge_photo_${viewB.id}')">
+                                <i class="fa-regular fa-image"></i><span class="photo-counter" id="counter-bridge_photo_${viewB.id}">0</span>
+                            </button>
+                        </td>
+                        ` : `<td></td><td></td>`}
+                    </tr>
+                `;
     }
 
     container.innerHTML = htmlContent;
