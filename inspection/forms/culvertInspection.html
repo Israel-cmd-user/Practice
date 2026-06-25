@@ -222,7 +222,7 @@
         </table>
 
         <div class="section-title">Remedial Work Recommendations</div>
-        <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
+        <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed; width: 100%;">
             <colgroup>
                 <col style="width: 5%;">
                 <col style="width: 18%;">
@@ -241,76 +241,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-row-id="1">
-                    <td>1</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-1" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-1')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-1')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="2">
-                    <td>2</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-2" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-2')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-2')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="3">
-                    <td>3</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-3" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-3')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-3')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="4">
-                    <td>4</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-4" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-4')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-4')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="5">
-                    <td>5</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-5" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-5')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-5')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="6">
-                    <td>6</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-6" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-6')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-6')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="7">
-                    <td>7</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-7" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-7')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-7')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="8">
-                    <td>8</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-8" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-8')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-8')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="9">
-                    <td>9</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-9" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-9')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-9')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
-                <tr data-row-id="10">
-                    <td>10</td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text"></td>
-                    <td class="photo-cell">
-                        <input type="file" id="rem-img-10" accept="image/*" multiple class="photo-file-input" onchange="handlePhotoUpload(event, 'rem-img-10')">
-                        <button type="button" class="photo-manage-btn" onclick="openPhotoManager('rem-img-10')"><i class="fa-regular fa-image"></i> <span class="photo-counter">0</span></button>
-                    </td>
-                </tr>
+                <script>
+                    for (let i = 1; i <= 10; i++) {
+                        document.write(`
+                            <tr data-row-id="${i}">
+                                <td>${i}</td>
+                                <td><input type="text"></td>
+                                <td><input type="text" class="cell-center"></td>
+                                <td><input type="text"></td>
+                                <td><input type="text" class="cell-center"></td>
+                                <td><input type="text" class="cell-center"></td>
+                                <td><input type="text" class="cell-center"></td>
+                                <td><input type="text" class="cell-center"></td>
+                                <td><input type="text"></td>
+                                <td class="photo-cell" style="text-align: center; vertical-align: middle; padding: 2px;">
+                                    <input type="file" id="cul-rem-img-${i}" accept="image/*" multiple class="photo-file-input" style="display: none;">
+                                    <button type="button" class="photo-manage-btn" data-target="cul-rem-img-${i}" style="padding: 4px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff;">
+                                        <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-cul-rem-img-${i}">0</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        `);
+                    }
+                </script>
             </tbody>
         </table>
 
@@ -382,5 +335,6 @@
     </div>
 
     <script type="module" src="/app.js"></script>
+    <script type="module" src="/scripts/inventoryPhotos.js"></script>
 </body>
 </html>

@@ -1,3 +1,9 @@
+/**
+ * Unified Asset Photo Engine
+ * Handles rendering for Inventory components and direct inline file counter tracking
+ * for Bridge Inventory, Culvert Inventory, Bridge Inspection, and Culvert Inspection.
+ */
+
 const BRIDGE_INVENTORY_VIEWS = [
     { id: 1, label: "View 1: Bridge in Elevation" },
     { id: 2, label: "View 2: Elevation from Opposite Side" },
@@ -18,12 +24,12 @@ const BRIDGE_INVENTORY_VIEWS = [
 ];
 
 const CULVERT_INVENTORY_VIEWS = [
-    { id: 1, label: "View 1: Structure inlet in evaluation", placeholder: "Show total number of cells" },
+    { id: 1, label: "View 1: Structure inlet in elevation", placeholder: "Show total number of cells" },
     { id: 2, label: "View 2: Structure from outlet in elevation", placeholder: "Show total number of cells and apron slabs" },
-    { id: 3, label: "View 3: Structure from upper", placeholder: "In direction of increasing chainage" },
-    { id: 4, label: "View 4: Structure from oppisite end of approach", placeholder: "In direction of decreasing chainage" },
+    { id: 3, label: "View 3: Structure from upper approach", placeholder: "In direction of increasing chainage" },
+    { id: 4, label: "View 4: Structure from opposite end of approach", placeholder: "In direction of decreasing chainage" },
     { id: 5, label: "View 5: View taken from the top of fill of feature crossed", placeholder: "Road or upstream river view" },
-    { id: 6, label: "View 6: View taken from the top of fill of fature crossed", placeholder: "Road or downstream river view" },
+    { id: 6, label: "View 6: View taken from the top of fill of feature crossed", placeholder: "Road or downstream river view" },
     { id: 7, label: "View 7: View of inside of bridge barrel showing roof walls & floor", placeholder: "" },
     { id: 8, label: "View 8: Structure number", placeholder: "" },
     { id: 9, label: "View 9: Any other salient feature", placeholder: "" }
@@ -38,136 +44,118 @@ export function initPhotoInventoryGrid() {
     if (!container) return; 
 
     let htmlContent = '';
-    
     for (let i = 0; i < BRIDGE_INVENTORY_VIEWS.length; i += 2) {
         const viewA = BRIDGE_INVENTORY_VIEWS[i];
         const viewB = BRIDGE_INVENTORY_VIEWS[i + 1];
 
         htmlContent += `
-                    <tr>
-                        <td>${viewA.label}</td>
-                        <td class="photo-cell">
-                            <button type="button" class="photo-manage-btn" onclick="openBridgePhotoModal('bridge_photo_${viewA.id}')">
-                                <i class="fa-regular fa-image"></i><span class="photo-counter" id="counter-bridge_photo_${viewA.id}">0</span>
-                            </button>
-                        </td>
-                        ${viewB ? `
-                        <td>${viewB.label}</td>
-                        <td class="photo-cell">
-                            <button type="button" class="photo-manage-btn" onclick="openBridgePhotoModal('bridge_photo_${viewB.id}')">
-                                <i class="fa-regular fa-image"></i><span class="photo-counter" id="counter-bridge_photo_${viewB.id}">0</span>
-                            </button>
-                        </td>
-                        ` : `<td></td><td></td>`}
-                    </tr>
-                `;
+            <tr>
+                <td>${viewA.label}</td>
+                <td class="photo-cell">
+                    <input type="file" id="p-img-${viewA.id}" class="photo-file-input" multiple style="display: none;">
+                    <button type="button" class="photo-manage-btn" data-target="p-img-${viewA.id}">
+                        <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-p-img-${viewA.id}">0</span>
+                    </button>
+                </td>
+                ${viewB ? `
+                <td>${viewB.label}</td>
+                <td class="photo-cell">
+                    <input type="file" id="p-img-${viewB.id}" class="photo-file-input" multiple style="display: none;">
+                    <button type="button" class="photo-manage-btn" data-target="p-img-${viewB.id}">
+                        <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-p-img-${viewB.id}">0</span>
+                    </button>
+                </td>
+                ` : `<td></td><td></td>`}
+            </tr>
+        `;
     }
-
     container.innerHTML = htmlContent;
 }
 
 /**
  * Renders the Culvert Photo Inventory Component
- * Constructs a single-column detailed assessment table row structure
+ * Upgraded to use direct inline upload matching the Bridge layout pattern
  */
 export function renderCulvertPhotoInventoryTable() {
     const tableBody = document.getElementById("photo-inventory-tbody");
     if (!tableBody) return; 
 
     tableBody.innerHTML = ""; 
-
     CULVERT_INVENTORY_VIEWS.forEach(view => {
         const row = document.createElement("tr");
-        
         row.innerHTML = `
             <td width="40%" style="font-weight: 500; padding: 6px 10px;">${view.label}</td>
             <td class="photo-cell" width="20%">
-                <button type="button" class="photo-manage-btn" onclick="openPhotoModal('cul_photo_${view.id}')">
+                <input type="file" id="cul-p-img-${view.id}" class="photo-file-input" multiple style="display: none;">
+                <button type="button" class="photo-manage-btn" data-target="cul-p-img-${view.id}">
                     <i class="fa-regular fa-image"></i> Manage 
-                    <span class="photo-counter" id="counter-cul_photo_${view.id}">0</span>
+                    <span class="photo-counter" id="counter-cul-p-img-${view.id}">0</span>
                 </button>
             </td>
             <td width="40%">
-                <input type="text" 
-                       id="cul_photo_${view.id}_notes" 
-                       name="cul_photo_${view.id}_notes" 
-                       placeholder="${view.placeholder}">
+                <input type="text" id="cul_photo_${view.id}_notes" name="cul_photo_${view.id}_notes" placeholder="${view.placeholder || ''}">
             </td>
         `;
-        
         tableBody.appendChild(row);
     });
 }
 
 /**
- * Binds live event listeners to Bridge file inputs to update counters dynamically
+ * Robust Centralized Event Handler for ALL upload components
+ * Manages every photo-cell container across forms dynamically via event delegation
  */
-function bindBridgeCounterListeners() {
-    const inputs = document.querySelectorAll('.photo-file-input');
-    
-    inputs.forEach(input => {
-        input.addEventListener('change', function() {
-            const containerCell = this.closest('.photo-cell');
-            const counterSpan = containerCell.querySelector('.photo-counter');
-            const fileCount = this.files ? this.files.length : 0;
-            
-            if (counterSpan) {
-                counterSpan.textContent = fileCount;
-                
-                const targetBtn = containerCell.querySelector('.photo-manage-btn');
-                if (fileCount > 0) {
-                    counterSpan.classList.add('has-photos');
-                    if (targetBtn) targetBtn.style.borderColor = '#2563eb';
-                } else {
-                    counterSpan.classList.remove('has-photos');
-                    if (targetBtn) targetBtn.style.borderColor = '';
-                }
-            }
-        });
+function bindGlobalPhotoInterfaceEvents() {
+    // Intercepts any click event on a manage photo button across any form view
+    document.body.addEventListener('click', (e) => {
+        const btn = e.target.closest('.photo-manage-btn');
+        if (btn && btn.dataset.target) {
+            const inputEl = document.getElementById(btn.dataset.target);
+            if (inputEl) inputEl.click();
+        }
     });
-}
 
-/**
- * Global synchronization loop to read live memory state and update visual indicators
- */
-export function updateAllPhotoCounters() {
-    const culvertStorage = window.culvertImages || {}; 
-    
-    CULVERT_INVENTORY_VIEWS.forEach(view => {
-        const counterId = `counter-cul_photo_${view.id}`;
-        const counterEl = document.getElementById(counterId);
-        if (counterEl) {
-            const key = `cul_photo_${view.id}`;
-            const count = (culvertStorage[key] && Array.isArray(culvertStorage[key])) ? culvertStorage[key].length : 0;
-            counterEl.textContent = count;
+    // Automatically monitors file picking adjustments across any input asset row
+    document.body.addEventListener('change', (e) => {
+        if (e.target && e.target.classList.contains('photo-file-input')) {
+            const inputEl = e.target;
+            const containerCell = inputEl.closest('.photo-cell');
             
-            const parentBtn = counterEl.closest('.photo-manage-btn');
-            if (count > 0) {
-                counterEl.classList.add('has-photos');
-                if (parentBtn) parentBtn.classList.add('has-photos');
-            } else {
-                counterEl.classList.remove('has-photos');
-                if (parentBtn) parentBtn.classList.remove('has-photos');
+            if (containerCell) {
+                const counterEl = containerCell.querySelector('.photo-counter');
+                const count = inputEl.files ? inputEl.files.length : 0;
+                
+                if (counterEl) {
+                    counterEl.textContent = count;
+                    const parentBtn = containerCell.querySelector('.photo-manage-btn');
+                    
+                    if (count > 0) {
+                        counterEl.classList.add('has-photos');
+                        if (parentBtn) {
+                            parentBtn.classList.add('has-photos');
+                            parentBtn.style.borderColor = '#2563eb';
+                        }
+                    } else {
+                        counterEl.classList.remove('has-photos');
+                        if (parentBtn) {
+                            parentBtn.classList.remove('has-photos');
+                            parentBtn.style.borderColor = '';
+                        }
+                    }
+                }
             }
         }
     });
 }
 
 /**
- * Orchestrates Automatic UI Construction Sequence Based on DOM Detection
+ * Orchestrates Layout Sequence and initialization
  */
 function runPhotoInterfaceInitializers() {
     initPhotoInventoryGrid();
     renderCulvertPhotoInventoryTable();
-    
-    bindBridgeCounterListeners();
-
-    if (typeof updateAllPhotoCounters === "function") {
-        updateAllPhotoCounters();
-    }
+    bindGlobalPhotoInterfaceEvents();
 }
 
-// Attach lifecycle loading orchestrator safely
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", runPhotoInterfaceInitializers);
 } else {

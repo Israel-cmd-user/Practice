@@ -88,7 +88,7 @@
                     <tr>
                         <th style="width: 25%;">Structure Name</th>
                         <td style="width: 25%;"><input type="text" name="structure_name" placeholder="Enter name..."></td>
-                        <th style="width: 25%;">Size Category/th>
+                        <th style="width: 25%;">Size Category</th>
                         <td style="width: 25%;">
                             <select name="size_category" required>
                                 <option value="" disabled selected>Select category...</option>
@@ -99,7 +99,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Bridge Type/th>
+                        <th>Bridge Type</th>
                         <td>
                             <select name="bridge_type" required>
                                 <option value="" disabled selected>Select type...</option>
@@ -108,7 +108,7 @@
                                 <option value="masonry">Masonry Arch</option>
                             </select>
                         </td>
-                        <th>Structure Orientation/th>
+                        <th>Structure Orientation</th>
                         <td>
                             <select name="structure_orientation" required>
                                 <option value="" disabled selected>Select orientation...</option>
@@ -118,7 +118,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Feature Crossed/th>
+                        <th>Feature Crossed</th>
                         <td>
                             <select name="feature_crossed" required>
                                 <option value="" disabled selected>Select feature...</option>
@@ -141,7 +141,7 @@
                                 <option value="W">Westbound</option>
                             </select>
                         </td>
-                        <th>Road Over/Under/th>
+                        <th>Road Over/Under</th>
                         <td>
                             <select name="road_over_under" required>
                                 <option value="" disabled selected>Select profile...</option>
@@ -151,21 +151,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Overall Structure Length (m)/th>
+                        <th>Overall Structure Length (m)</th>
                         <td>
                             <input type="number" step="0.01" name="overall_length" placeholder="Eg. 123.56" required>
                         </td>
-                        <th>Overall Structure Width (m)/th>
+                        <th>Overall Structure Width (m)</th>
                         <td>
                             <input type="number" step="0.01" name="overall_width" placeholder="Eg. 12.45" required>
                         </td>
                     </tr>
                     <tr>
-                        <th>Width Between Kerb (m)/th>
+                        <th>Width Between Kerb (m)</th>
                         <td>
                             <input type="number" step="0.01" name="width_between_kerb" placeholder="Eg. 11.20" required>
                         </td>
-                        <th>Vertical Alignment/th>
+                        <th>Vertical Alignment</th>
                         <td>
                             <select name="vertical_alignment" required>
                                 <option value="">Select profile...</option>
@@ -176,7 +176,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Horizontal Alignment/th>
+                        <th>Horizontal Alignment</th>
                         <td>
                             <select name="horizontal_alignment" required>
                                 <option value="">Select geometry...</option>
@@ -255,46 +255,55 @@
                 <tbody id="photo-inventory-grid"></tbody>
             </table>
 
+            <tbody id="photo-inventory-tbody"></tbody>
+
         </form>
 
         <div class="section-title">Inspector's Assessment & Comments</div>
-            <table class="form-grid">
-                <tr>
-                    <th style="width: 25%;">Further Inspection Needed?</th>
-                    <td>
-                        <select style="width: 100%; ">
-                            <option value=""></option>
-                            <option value="N">No</option>
-                            <option value="Y">Yes</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Special Field Requirements</th>
-                    <td><input type="text"></td>
-                </tr>
-                <tr>
-                    <th>Inspector's Comments</th>
-                    <td>
-                        <textarea 
-                            rows="1" 
-                            style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
-                            oninput="autoGrow(this)">
-                        </textarea>
-                    </td>
-                </tr>
-            </table>
+        <table class="form-grid">
+            <tr>
+                <th style="width: 25%;">Further Inspection Needed?</th>
+                <td>
+                    <select style="width: 100%; ">
+                        <option value=""></option>
+                        <option value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Special Field Requirements</th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th>Inspector's Comments</th>
+                <td>
+                    <textarea 
+                        rows="1" 
+                        style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
+                        oninput="autoGrow(this)">
+                    </textarea>
+                </td>
+            </tr>
+        </table>
 
-            <div class="legend-box">
-                <div class="legend-header">EVALUATION DEFINITIONS REFERENCE DIAGRAM MATRIX</div>
-                <div class="legend-grid">
-                    <div class="cat-title cat-d">D - DEGREE</div>
-                    <div class="cat-title cat-e">E - EXTENT</div>
-                    <div class="cat-title cat-r">R - RELEVANCY</div>
-                    <div class="cat-title cat-u">U - URGENCY</div>
+        <div class="legend-box">
+            <div class="legend-header">EVALUATION DEFINITIONS REFERENCE DIAGRAM MATRIX</div>
+            <div class="legend-grid">
+                <div class="cat-title cat-d">D - DEGREE</div>
+                <div class="cat-title cat-e">E - EXTENT</div>
+                <div class="cat-title cat-r">R - RELEVANCY</div>
+                <div class="cat-title cat-u">U - URGENCY</div>
 
-                    <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
-                </div>
+                <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> 
+                <div>1</div><div>2</div><div>3</div><div>4</div> 
+                <div>1</div><div>2</div><div>3</div><div>4</div> 
+                <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> 
+                <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> 
+                <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> 
+                <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> 
+                <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
+            </div>
         </div>
     </div>
 
