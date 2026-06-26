@@ -306,47 +306,19 @@
         <div class="section-title">Remedial Work Recommendations</div>
             <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
                 <colgroup>
-                    <col style="width: 5%;">
-                    <col style="width: 18%;">
-                    <col style="width: 7%;">
-                    <col style="width: 22%;">
-                    <col style="width: 6%;">
-                    <col style="width: 6%;">
-                    <col style="width: 5%;">
-                    <col style="width: 5%;">
-                    <col style="width: 18%;">
+                    <col style="width: 5%;"><col style="width: 18%;"><col style="width: 7%;">
+                    <col style="width: 22%;"><col style="width: 6%;"><col style="width: 6%;">
+                    <col style="width: 5%;"><col style="width: 5%;"><col style="width: 18%;">
                     <col style="width: 8%;">
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>Item</th><th>Inspection Item</th><th>Pos</th><th>Activity Description</th><th>Qty</th><th>Unit</th><th>Urg</th><th>MS</th><th>Remarks</th><th>Photo</th>
+                        <th>Item</th><th>Inspection Item</th><th>Pos</th><th>Activity Description</th>
+                        <th>Qty</th><th>Unit</th><th>Urg</th><th>MS</th><th>Remarks</th><th>Photo</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <script>
-                        for (let i = 1; i <= 10; i++) {
-                            document.write(`
-                                <tr data-row-id="${i}">
-                                    <td>${i}</td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text" class="cell-center"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text" class="cell-center"></td>
-                                    <td><input type="text" class="cell-center"></td>
-                                    <td><input type="text" class="cell-center"></td>
-                                    <td><input type="text" class="cell-center"></td>
-                                    <td><input type="text"></td>
-                                    <td class="photo-cell" style="text-align: center; vertical-align: middle; padding: 2px;">
-                                        <input type="file" id="br-rem-img-${i}" accept="image/*" multiple class="photo-file-input" style="display: none;">
-                                        <button type="button" class="photo-manage-btn" data-target="br-rem-img-${i}" style="padding: 4px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff;">
-                                            <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-br-rem-img-${i}">0</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            `);
-                        }
-                    </script>
-                </tbody>
+                
+                <tbody id="remedial-table-tbody"></tbody> 
             </table>
 
         <div class="section-title">Inspector's Assessment & Comments</div>

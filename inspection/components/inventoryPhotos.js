@@ -148,12 +148,87 @@ function bindGlobalPhotoInterfaceEvents() {
 }
 
 /**
+ * Renders the Remedial Work Matrix Rows securely
+ * Eliminates legacy document.write architecture patterns
+ */
+export function renderRemedialWorkTable() {
+    const tableBody = document.getElementById("remedial-table-tbody");
+    if (!tableBody) return; // Guard clause 
+
+    let htmlContent = '';
+    
+    // Generates the identical 10 rows matching your layout
+    for (let i = 1; i <= 10; i++) {
+        htmlContent += `
+            <tr data-row-id="${i}">
+                <td>${i}</td>
+                <td><input type="text"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text"></td>
+                <td class="photo-cell" style="text-align: center; vertical-align: middle; padding: 2px;">
+                    <input type="file" id="br-rem-img-${i}" accept="image/*" multiple class="photo-file-input" style="display: none;">
+                    <button type="button" class="photo-manage-btn" data-target="br-rem-img-${i}" style="padding: 4px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff;">
+                        <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-br-rem-img-${i}">0</span>
+                    </button>
+                </td>
+            </tr>
+        `;
+    }
+    
+    // Inject all content safely at once
+    tableBody.innerHTML = htmlContent;
+}
+
+/**
+ * Renders the Culvert Remedial Work Matrix Rows securely
+ * Standardizes layout engines across various asset forms
+ */
+export function renderCulvertRemedialTable() {
+    const tableBody = document.getElementById("culvert-remedial-tbody");
+    if (!tableBody) return; // Silent safety exit if rendering a different form type
+
+    let htmlContent = '';
+    
+    for (let i = 1; i <= 10; i++) {
+        htmlContent += `
+            <tr data-row-id="${i}">
+                <td>${i}</td>
+                <td><input type="text"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text" class="cell-center"></td>
+                <td><input type="text"></td>
+                <td class="photo-cell" style="text-align: center; vertical-align: middle; padding: 2px;">
+                    <input type="file" id="cul-rem-img-${i}" accept="image/*" multiple class="photo-file-input" style="display: none;">
+                    <button type="button" class="photo-manage-btn" data-target="cul-rem-img-${i}" style="padding: 4px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff;">
+                        <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-cul-rem-img-${i}">0</span>
+                    </button>
+                </td>
+            </tr>
+        `;
+    }
+    
+    tableBody.innerHTML = htmlContent;
+}
+
+/**
  * Orchestrates Layout Sequence and initialization
  */
 function runPhotoInterfaceInitializers() {
     initPhotoInventoryGrid();
     renderCulvertPhotoInventoryTable();
+    renderRemedialWorkTable();
+    renderCulvertRemedialTable();
     bindGlobalPhotoInterfaceEvents();
+    
 }
 
 if (document.readyState === "loading") {
@@ -161,3 +236,4 @@ if (document.readyState === "loading") {
 } else {
     runPhotoInterfaceInitializers();
 }
+
