@@ -88,7 +88,7 @@ export function renderCulvertPhotoInventoryTable() {
             <td class="photo-cell" width="20%">
                 <input type="file" id="cul-p-img-${view.id}" class="photo-file-input" multiple style="display: none;">
                 <button type="button" class="photo-manage-btn" data-target="cul-p-img-${view.id}">
-                    <i class="fa-regular fa-image"></i> Manage 
+                    <i class="fa-regular fa-image"></i> 
                     <span class="photo-counter" id="counter-cul-p-img-${view.id}">0</span>
                 </button>
             </td>

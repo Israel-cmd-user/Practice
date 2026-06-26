@@ -118,9 +118,10 @@
                         <td>
                             <select name="feature_crossed" required>
                                 <option value="" disabled selected>Select feature...</option>
-                                <option value="river">Watercourse / River</option>
-                                <option value="road">Roadway Interchange</option>
-                                <option value="rail">Railway Corridor</option>
+                                <option >Watercourse / River</option>
+                                <option >Roadway Interchange</option>
+                                <option >Railway Corridor</option>
+
                             </select>
                         </td>
                         <th>Year Constructed</th>
@@ -131,18 +132,22 @@
                         <td>
                             <select name="river_flow_direction">
                                 <option value="">N/A or Select...</option>
-                                <option value="N">Northbound</option>
-                                <option value="S">Southbound</option>
-                                <option value="E">Eastbound</option>
-                                <option value="W">Westbound</option>
+                                <option value="N">North</option>
+                                <option value="S">South</option>
+                                <option value="E">East</option>
+                                <option value="W">West</option>
+                                <option value="NA">NA</option>
+                                <option value="Unknown">Unknown</option>
                             </select>
                         </td>
                         <th>Road Over/Under</th>
                         <td>
                             <select name="road_over_under" required>
                                 <option value="" disabled selected>Select profile...</option>
-                                <option value="over">Road Goes Over Feature</option>
-                                <option value="under">Road Passes Under Feature</option>
+                                <option value="over">Over only</option>
+                                <option value="under">Under only</option>
+                                <option value="adjacent">Adjacent</option>
+                                <option value="NA">NA</option>
                             </select>
                         </td>
                     </tr>
@@ -156,30 +161,37 @@
                         <th>Minimum Clear Width (m)</th>
                         <td><input type="number" step="any" name="width_between_kerb" placeholder="Eg. 11.20" required></td>
                         <th>Overall Cell Length (m)</th>
-                        <td>
-                            <select name="overall_cell_length_profile" required>
-                                <option value="">Select profile...</option>
-                                <option value="flat">Flat / Level</option>
-                                <option value="sag">Sag Curve</option>
-                                <option value="crest">Crest Curve</option>
-                            </select>
-                        </td>
+                        <td><input type="number" step="any" name="overall_cell_length_profile" placeholder="Eg. 11.20" required></td>
                     </tr>
                     <tr>
                         <th>Vertical Alignment</th>
                         <td>
                             <select name="vertical_alignment" required>
                                 <option value="">Select geometry...</option>
-                                <option value="straight">Straight / Tangent</option>
-                                <option value="curved">Curved Profile</option>
+                                <option >Flat or level bridge</option>
+                                <option >Sag or curved</option>
+                                <option >Crest Cuver</option>
+                                <option >Not sure</option>
+                                <option >Other</option>
+                                <option >NA</option>
                             </select>
                         </td>
                         <th>Horizontal Alignment</th>
                         <td>
                             <select name="horizontal_alignment" required>
                                 <option value="">Select geometry...</option>
-                                <option value="straight">Straight / Tangent</option>
-                                <option value="curved">Curved Profile</option>
+                                <option >Not Sure</option>
+                                <option >Straight</option>
+                                <option >Skew</option>
+                                <option >Curverd</option>
+                                <option >Spiral</option>
+                                <option >Compound Curve</option>
+                                <option >Parallel</option>
+                                <option >Transition Curves</option>
+                                <option >Reverse Curve</option>
+                                <option >Super-elevation</option>
+                                <option >Other</option>
+                                <option >NA</option>
                             </select>
                         </td>
                     </tr>
@@ -188,8 +200,10 @@
                         <td>
                             <select name="camber_crossfall">
                                 <option value="">Select profile...</option>
-                                <option value="camber">Standard Camber</option>
-                                <option value="crossfall">Planar Crossfall</option>
+                                <option >Camber</option>
+                                <option >Crossfall</option>
+                                <option >Not Sure</option>
+                                <option >NA</option>
                             </select>
                         </td>
                         <th>Angle of Skew (°)</th>
@@ -262,10 +276,6 @@
                         <option value="Y">Yes</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
-                <th>Special Field Requirements</th>
-                <td><input type="text"></td>
             </tr>
             <tr>
                 <th>Inspector's Comments</th>
