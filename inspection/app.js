@@ -4,6 +4,7 @@ import { populateCurrentDateTime, populateCurrentDate, autoGrow } from './utils/
 import * as PhotoManager from './components/photoManager.js';
 import { initMapPanel } from './components/mapManager.js';
 import { initPhotoInventoryGrid } from './components/inventoryPhotos.js';
+import { initDynamicStructureManager, saveRating } from './components/dynamicManager.js';
 
 // Setup Initialization bindings
 window.onload = populateCurrentDateTime;
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populateCurrentDate();
     initMapPanel();
     initPhotoInventoryGrid();
+    initDynamicStructureManager();
 
     // Table Cell Autofocus Engine Integration
     const interactiveContainers = document.querySelectorAll('.matrix-container, #remedial-table');
@@ -44,6 +46,7 @@ window.exportToPDF = exportToPDF;
 window.exportToExcel = exportToExcel;
 window.getLocation = getLocation;
 window.autoGrow = autoGrow;
+window.saveRating = saveRating;
 
 // Expose PhotoManager methods for inline HTML triggers
 window.openPhotoManager = PhotoManager.openPhotoManager;

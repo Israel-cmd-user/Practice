@@ -23,7 +23,8 @@ input[type="text"], input[type="number"], select, textarea {
 }
 .rating-box div {
     padding: 2px;
-    border-radius: 3px;
+    border: none;
+    background: none;
 }
 
 .photo-cell {

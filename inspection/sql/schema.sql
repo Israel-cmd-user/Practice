@@ -1,4 +1,4 @@
-// Unified Infrastructure Asset & Assessment Schema
+// Database is still incomplete there are still a couple of columns that are missing
 // Designed to handle Bridge Inventory, Culvert Inventory, and Culvert Inspections simultaneously.
 
 enum asset_type_enum {
