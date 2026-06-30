@@ -93,7 +93,7 @@ export function renderCulvertPhotoInventoryTable() {
                 </button>
             </td>
             <td width="40%">
-                <input type="text" id="cul_photo_${view.id}_notes" name="cul_photo_${view.id}_notes" placeholder="${view.placeholder || ''}">
+                <input type="text" id="cul_photo_${view.id}_notes" name="cul_photo_${view.id}_notes" placeholder="${view.placeholder || ''}" disabled>
             </td>
         `;
         tableBody.appendChild(row);

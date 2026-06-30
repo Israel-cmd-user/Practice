@@ -94,6 +94,5 @@ Table media_attachments {
   remedial_action_id integer [ref: > remedial_actions.id, null]
   perspective_label varchar [note: "e.g., 'Side View', 'Inlet View', 'Defect Photo'"]
   photo_link varchar [not null, note: "URL path mapping to your application media bucket"]
-  observations text [note: "Captures text fields aligned directly beside inventory photos"]
   uploaded_at timestamp [default: `now()`]
 }
