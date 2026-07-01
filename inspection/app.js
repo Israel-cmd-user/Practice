@@ -1,10 +1,10 @@
 import { exportToPDF, exportToExcel } from './services/exportService.js';
 import { getLocation } from './services/geolocationService.js';
 import { populateCurrentDateTime, populateCurrentDate, autoGrow } from './utils/helpers.js';
-import * as PhotoManager from './components/photoManager.js';
-import { initMapPanel } from './components/mapManager.js';
-import { initPhotoInventoryGrid } from './components/inventoryPhotos.js';
-import * as Choices from './components/choices.js';
+import * as PhotoManager from './components/managers/photoManager.js';
+import { initMapPanel } from './components/managers/mapManager.js';
+import { initPhotoInventoryGrid } from './components/managers/inventoryPhotos.js';
+import * as Choices from './components/choices/bridgeChoices.js';
 
 // Setup Initialization bindings
 window.onload = populateCurrentDateTime;
