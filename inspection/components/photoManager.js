@@ -4,11 +4,11 @@ let activeRowId = null;
 export function openPhotoManager(rowId) {
     activeRowId = rowId;
     document.getElementById('modal-item-id').textContent = rowId;
-    
+
     if (!rowPhotosState[activeRowId]) {
         rowPhotosState[activeRowId] = [];
     }
-    
+
     renderModalGallery();
     document.getElementById('photo-modal').style.display = 'flex';
 }
@@ -39,24 +39,24 @@ export function handleRowPhotoUpload(event, rowId) {
     for (let i = 0; i < uploadedFiles.length; i++) {
         const file = uploadedFiles[i];
         const generatedUrl = URL.createObjectURL(file);
-        
+
         rowPhotosState[rowId].push({
             id: 'img_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
             url: generatedUrl,
             file: file
         });
     }
-    
+
     event.target.value = '';
     updateRowBadgeCounter(rowId);
-    
+
     if (activeRowId === rowId) renderModalGallery();
 }
 
 function updateRowBadgeCounter(rowId) {
     const totalCount = rowPhotosState[rowId] ? rowPhotosState[rowId].length : 0;
     const targetBadge = document.querySelector(`tr[data-row-id="${rowId}"] .photo-counter`);
-    
+
     if (targetBadge) {
         targetBadge.textContent = totalCount;
         if (totalCount > 0) {
@@ -70,9 +70,9 @@ function updateRowBadgeCounter(rowId) {
 function renderModalGallery() {
     const galleryContainer = document.getElementById('modal-gallery');
     galleryContainer.innerHTML = '';
-    
+
     const currentAssets = rowPhotosState[activeRowId] || [];
-    
+
     if (currentAssets.length === 0) {
         galleryContainer.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:#94a3b8; font-size:12px; padding:25px 10px;">
                                         No images attached. Tap "Upload / Capture" to interact.
@@ -83,7 +83,7 @@ function renderModalGallery() {
     currentAssets.forEach(asset => {
         const wrapNode = document.createElement('div');
         wrapNode.className = 'thumb-wrapper';
-        
+
         wrapNode.onclick = (e) => {
             if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
                 viewSingleImageFullscreen(asset.url);
@@ -119,10 +119,10 @@ export function deleteSingleAsset(assetId) {
 
 export function deleteSelectedPhotos() {
     if (!rowPhotosState[activeRowId] || rowPhotosState[activeRowId].length === 0) return;
-    
+
     const activeCheckedBoxes = document.querySelectorAll('.thumb-checkbox:checked');
     const checkedIds = Array.from(activeCheckedBoxes).map(box => box.getAttribute('data-asset-id'));
-    
+
     if (checkedIds.length === 0) {
         alert('Please check at least one checkbox on the thumbnails to perform bulk deletion.');
         return;

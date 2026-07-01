@@ -22,15 +22,15 @@ function initDynamicSpans() {
         renderSpanItems(spans);
     }
 
-    function createRatingBox(type = "text") {
-        return `<td><div class="rating-box"><div><input type="${type}" placeholder="-"></div><div><input type="${type}" placeholder="-"></div><div><input type="${type}" placeholder="-"></div></div></td>`;
+    function createRatingBox(type = "text", itemKey = "", itemLabel = "", position = "") {
+        return `<td><div class="rating-box" data-item-key="${itemKey}" data-item-label="${itemLabel}" data-position="${position}"><div><input type="${type}" placeholder="-"></div><div><input type="${type}" placeholder="-"></div><div><input type="${type}" placeholder="-"></div></div></td>`;
     }
 
     function renderPierItems(piers) {
         const items = [
-            { id: 12, name: "Pier Protection Works" },
-            { id: 13, name: "Pier Foundations" },
-            { id: 14, name: "Piers & Columns" }
+            { id: 12, name: "Pier Protection Works", key: "PierProtectionWorks" },
+            { id: 13, name: "Pier Foundations", key: "PierFoundations" },
+            { id: 14, name: "Piers & Columns", key: "PiersColumns" }
         ];
 
         let html = "";
@@ -40,7 +40,7 @@ function initDynamicSpans() {
             items.forEach(item => {
                 html += `<tr>
                     <td>${item.id}. ${item.name}</td>
-                    <td class="cell-center">-</td>${createRatingBox("text")}
+                    <td class="cell-center">-</td>${createRatingBox("text", item.key, `${item.id}. ${item.name}`, "-")}
                     <td class="cell-center"></td><td></td>
                 </tr>`;
             });
@@ -57,13 +57,13 @@ function initDynamicSpans() {
                     let p2Idx = r * 2 + 2;
                     
                     if (p1Idx <= piers) {
-                        html += `<td class="cell-center">P${p1Idx}</td>${createRatingBox("text")}`;
+                        html += `<td class="cell-center">P${p1Idx}</td>${createRatingBox("text", item.key, `${item.id}. ${item.name}`, `P${p1Idx}`)}`;
                     } else {
                         html += `<td class="cell-center"></td><td></td>`;
                     }
                     
                     if (p2Idx <= piers) {
-                        html += `<td class="cell-center">P${p2Idx}</td>${createRatingBox("text")}`;
+                        html += `<td class="cell-center">P${p2Idx}</td>${createRatingBox("text", item.key, `${item.id}. ${item.name}`, `P${p2Idx}`)}`;
                     } else {
                         html += `<td class="cell-center"></td><td></td>`;
                     }
@@ -77,14 +77,15 @@ function initDynamicSpans() {
 
     function renderSupportItems(spans) {
         const items = [
-            { id: 15, name: "Bearings" },
-            { id: 16, name: "Support Drainage" },
-            { id: 17, name: "Expansion Joints" }
+            { id: 15, name: "Bearings", key: "Bearings" },
+            { id: 16, name: "Support Drainage", key: "SupportedDrainage" },
+            { id: 17, name: "Expansion Joints", key: "ExpansionJoints" }
         ];
 
+        const piers = Math.max(0, spans - 1);
         let positions = ["A1", "A2"];
-        for (let i = 1; i <= spans; i++) {
-            positions.push(`S${i}`);
+        for (let i = 1; i <= piers; i++) {
+            positions.push(`P${i}`);
         }
 
         const rows = Math.ceil(positions.length / 2);
@@ -101,13 +102,13 @@ function initDynamicSpans() {
                 let pos2 = positions[r * 2 + 1];
                 
                 if (pos1) {
-                    html += `<td class="cell-center">${pos1}</td>${createRatingBox("text")}`;
+                    html += `<td class="cell-center">${pos1}</td>${createRatingBox("text", item.key, `${item.id}. ${item.name}`, pos1)}`;
                 } else {
                     html += `<td class="cell-center"></td><td></td>`;
                 }
                 
                 if (pos2) {
-                    html += `<td class="cell-center">${pos2}</td>${createRatingBox("text")}`;
+                    html += `<td class="cell-center">${pos2}</td>${createRatingBox("text", item.key, `${item.id}. ${item.name}`, pos2)}`;
                 } else {
                     html += `<td class="cell-center"></td><td></td>`;
                 }
@@ -120,9 +121,9 @@ function initDynamicSpans() {
 
     function renderSpanItems(spans) {
         const items = [
-            { id: 18, name: "Longitudinal Members" },
-            { id: 19, name: "Transverse Members" },
-            { id: 20, name: "Decks and Slabs" }
+            { id: 18, name: "Longitudinal Members", key: "LongitudinalMembers" },
+            { id: 19, name: "Transverse Members", key: "TransverseMembers" },
+            { id: 20, name: "Decks and Slabs", key: "DecksSlabs" }
         ];
 
         let positions = [];
@@ -144,13 +145,13 @@ function initDynamicSpans() {
                 let pos2 = positions[r * 2 + 1];
                 
                 if (pos1) {
-                    html += `<td class="cell-center">${pos1}</td>${createRatingBox("number")}`;
+                    html += `<td class="cell-center">${pos1}</td>${createRatingBox("number", item.key, `${item.id}. ${item.name}`, pos1)}`;
                 } else {
                     html += `<td class="cell-center"></td><td></td>`;
                 }
                 
                 if (pos2) {
-                    html += `<td class="cell-center">${pos2}</td>${createRatingBox("number")}`;
+                    html += `<td class="cell-center">${pos2}</td>${createRatingBox("number", item.key, `${item.id}. ${item.name}`, pos2)}`;
                 } else {
                     html += `<td class="cell-center"></td><td></td>`;
                 }

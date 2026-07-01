@@ -41,7 +41,7 @@ const CULVERT_INVENTORY_VIEWS = [
  */
 export function initPhotoInventoryGrid() {
     const container = document.getElementById('photo-inventory-grid');
-    if (!container) return; 
+    if (!container) return;
 
     let htmlContent = '';
     for (let i = 0; i < BRIDGE_INVENTORY_VIEWS.length; i += 2) {
@@ -78,9 +78,9 @@ export function initPhotoInventoryGrid() {
  */
 export function renderCulvertPhotoInventoryTable() {
     const tableBody = document.getElementById("photo-inventory-tbody");
-    if (!tableBody) return; 
+    if (!tableBody) return;
 
-    tableBody.innerHTML = ""; 
+    tableBody.innerHTML = "";
     CULVERT_INVENTORY_VIEWS.forEach(view => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -119,15 +119,15 @@ function bindGlobalPhotoInterfaceEvents() {
         if (e.target && e.target.classList.contains('photo-file-input')) {
             const inputEl = e.target;
             const containerCell = inputEl.closest('.photo-cell');
-            
+
             if (containerCell) {
                 const counterEl = containerCell.querySelector('.photo-counter');
                 const count = inputEl.files ? inputEl.files.length : 0;
-                
+
                 if (counterEl) {
                     counterEl.textContent = count;
                     const parentBtn = containerCell.querySelector('.photo-manage-btn');
-                    
+
                     if (count > 0) {
                         counterEl.classList.add('has-photos');
                         if (parentBtn) {
@@ -156,7 +156,7 @@ export function renderRemedialWorkTable() {
     if (!tableBody) return; // Guard clause 
 
     let htmlContent = '';
-    
+
     // Generates the identical 10 rows matching your layout
     for (let i = 1; i <= 10; i++) {
         htmlContent += `
@@ -179,7 +179,7 @@ export function renderRemedialWorkTable() {
             </tr>
         `;
     }
-    
+
     // Inject all content safely at once
     tableBody.innerHTML = htmlContent;
 }
@@ -193,7 +193,7 @@ export function renderCulvertRemedialTable() {
     if (!tableBody) return; // Silent safety exit if rendering a different form type
 
     let htmlContent = '';
-    
+
     for (let i = 1; i <= 10; i++) {
         htmlContent += `
             <tr data-row-id="${i}">
@@ -215,7 +215,7 @@ export function renderCulvertRemedialTable() {
             </tr>
         `;
     }
-    
+
     tableBody.innerHTML = htmlContent;
 }
 
@@ -228,7 +228,7 @@ function runPhotoInterfaceInitializers() {
     renderRemedialWorkTable();
     renderCulvertRemedialTable();
     bindGlobalPhotoInterfaceEvents();
-    
+
 }
 
 if (document.readyState === "loading") {

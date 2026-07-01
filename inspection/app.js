@@ -4,7 +4,7 @@ import { populateCurrentDateTime, populateCurrentDate, autoGrow } from './utils/
 import * as PhotoManager from './components/photoManager.js';
 import { initMapPanel } from './components/mapManager.js';
 import { initPhotoInventoryGrid } from './components/inventoryPhotos.js';
-import { initDynamicStructureManager, saveRating } from './components/dynamicManager.js';
+import * as Choices from './components/choices.js';
 
 // Setup Initialization bindings
 window.onload = populateCurrentDateTime;
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populateCurrentDate();
     initMapPanel();
     initPhotoInventoryGrid();
-    initDynamicStructureManager();
+    populateDropdowns();
 
     // Table Cell Autofocus Engine Integration
     const interactiveContainers = document.querySelectorAll('.matrix-container, #remedial-table');
@@ -46,7 +46,7 @@ window.exportToPDF = exportToPDF;
 window.exportToExcel = exportToExcel;
 window.getLocation = getLocation;
 window.autoGrow = autoGrow;
-window.saveRating = saveRating;
+
 
 // Expose PhotoManager methods for inline HTML triggers
 window.openPhotoManager = PhotoManager.openPhotoManager;
@@ -57,3 +57,42 @@ window.handleRowPhotoUpload = PhotoManager.handleRowPhotoUpload;
 window.closeImageViewer = PhotoManager.closeImageViewer;
 window.deleteSingleAsset = PhotoManager.deleteSingleAsset;
 window.deleteSelectedPhotos = PhotoManager.deleteSelectedPhotos;
+
+function populateSelect(selectId, data) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    
+    // Check if we need to clear existing options (keep placeholder if any)
+    const hasPlaceholder = select.querySelector('option[disabled][hidden]') !== null;
+    if (!hasPlaceholder) {
+        select.innerHTML = '<option value="" disabled selected hidden></option>';
+    } else {
+        select.innerHTML = select.firstElementChild.outerHTML; // Keep placeholder
+    }
+    
+    data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.label;
+        option.textContent = item.label;
+        select.appendChild(option);
+    });
+}
+
+function populateDatalist(datalistId, data) {
+    const datalist = document.getElementById(datalistId);
+    if (!datalist) return;
+    datalist.innerHTML = '';
+    data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.label;
+        datalist.appendChild(option);
+    });
+}
+
+function populateDropdowns() {
+    populateDatalist('inspector-names', Choices.INSPECTORS);
+    populateSelect('size-category', Choices.SIZE_CATEGORY);
+    populateSelect('bridge-type', Choices.BRIDGE_TYPE);
+    populateSelect('feature-crossed', Choices.FEATURE_CROSSED);
+    populateSelect('bridge-orientation', Choices.STRUC_ORIENTATION);
+}

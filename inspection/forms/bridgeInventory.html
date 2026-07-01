@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +11,23 @@
     <link rel="stylesheet" href="/styles/inventory.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
+
 <body>
 
     <div class="action-bar" id="no-print-actions">
         <h2>Bridge Inventory Assessment</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export Excel</button>
-            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save Progress</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export
+                PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export
+                Excel</button>
+            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save
+                Progress</button>
         </div>
     </div>
 
     <div class="document-page">
-        
+
         <div class="doc-header">
             <div class="doc-header-left">
                 <h3>Bridge Inventory Sheet</h3>
@@ -36,7 +41,7 @@
         <table class="form-grid">
             <tr>
                 <td rowspan="2" style="width: 25%; text-align: center; vertical-align: middle;">
-                    <img src="/assets/logo.png" style="width: 90%; margin: 5%;"/>
+                    <img src="/assets/logo.png" style="width: 90%; margin: 5%;" />
                 </td>
                 <th style="width: 20%;">Structure Type</th>
                 <th style="width: 15%;">Structure Number</th>
@@ -52,13 +57,14 @@
         </table>
 
         <div class="section-title">1. Field Geospatial Preview</div>
-        <div class="location-preview-zone" id="gps-capture-panel" title="Click panel space to synchronize location telemetry">
-            
+        <div class="location-preview-zone" id="gps-capture-panel"
+            title="Click panel space to synchronize location telemetry">
+
             <div class="telemetry-controls">
                 <div class="telemetry-instruction">
                     <i class="fa-solid fa-satellite-dish"></i> Click panel to synchronise live coordinate preview
                 </div>
-                
+
                 <div class="telemetry-fields">
                     <div class="field-group">
                         <label for="geo-lat">Latitude</label>
@@ -69,7 +75,7 @@
                         <input type="text" id="geo-lon" name="longitude" readonly placeholder="Awaiting alignment...">
                     </div>
                 </div>
-                
+
                 <div class="telemetry-status" id="geo-status-indicator">Status: Telemetry engine offline / idle</div>
             </div>
 
@@ -82,12 +88,13 @@
         <form id="assessment-data-form">
 
             <div class="section-title">2. Dimensions, Geometry and Road Clearances</div>
-            
+
             <table class="form-grid">
                 <tbody>
                     <tr>
                         <th style="width: 25%;">Structure Name</th>
-                        <td style="width: 25%;"><input type="text" name="structure_name" placeholder="Enter name..."></td>
+                        <td style="width: 25%;"><input type="text" name="structure_name" placeholder="Enter name...">
+                        </td>
                         <th style="width: 25%;">Size Category</th>
                         <td style="width: 25%;">
                             <select name="size_category" required>
@@ -205,9 +212,15 @@
                         <th>Position of Minimum Clearance</th>
                         <td>
                             <div class="rating-box">
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="pos_min_clearance" value="AS" style="width:13px; height:13px;"> AS</label></div>
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="pos_min_clearance" value="S1" style="width:13px; height:13px;"> S1</label></div>
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="pos_min_clearance" value="S2" style="width:13px; height:13px;"> S2</label></div>
+                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox"
+                                            name="pos_min_clearance" value="AS" style="width:13px; height:13px;">
+                                        AS</label></div>
+                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox"
+                                            name="pos_min_clearance" value="S1" style="width:13px; height:13px;">
+                                        S1</label></div>
+                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox"
+                                            name="pos_min_clearance" value="S2" style="width:13px; height:13px;">
+                                        S2</label></div>
                             </div>
                         </td>
                     </tr>
@@ -217,9 +230,15 @@
                         <th>Position of Expansion Joints</th>
                         <td>
                             <div class="rating-box">
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="expansion_joint_loc" value="AS" style="width:13px; height:13px;"> AS</label></div>
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="expansion_joint_loc" value="S1" style="width:13px; height:13px;"> S1</label></div>
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="expansion_joint_loc" value="S2" style="width:13px; height:13px;"> S2</label></div>
+                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox"
+                                            name="expansion_joint_loc" value="AS" style="width:13px; height:13px;">
+                                        AS</label></div>
+                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox"
+                                            name="expansion_joint_loc" value="S1" style="width:13px; height:13px;">
+                                        S1</label></div>
+                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox"
+                                            name="expansion_joint_loc" value="S2" style="width:13px; height:13px;">
+                                        S2</label></div>
                             </div>
                         </td>
                     </tr>
@@ -237,7 +256,8 @@
                 <tbody>
                     <tr>
                         <td style="font-weight: 600; background-color: var(--bg-light);">Span Length Component</td>
-                        <td><input type="number" step="any" name="span_length_as" placeholder="Enter dimension to two decimals (Eg. 24.50)"></td>
+                        <td><input type="number" step="any" name="span_length_as"
+                                placeholder="Enter dimension to two decimals (Eg. 24.50)"></td>
                     </tr>
                 </tbody>
             </table>
@@ -274,9 +294,7 @@
             <tr>
                 <th>Inspector's Comments</th>
                 <td>
-                    <textarea 
-                        rows="1" 
-                        style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
+                    <textarea rows="1" style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;"
                         oninput="autoGrow(this)">
                     </textarea>
                 </td>
@@ -291,18 +309,53 @@
                 <div class="cat-title cat-r">R - RELEVANCY</div>
                 <div class="cat-title cat-u">U - URGENCY</div>
 
-                <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> 
-                <div>1</div><div>2</div><div>3</div><div>4</div> 
-                <div>1</div><div>2</div><div>3</div><div>4</div> 
-                <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> 
-                <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> 
-                <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> 
-                <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> 
-                <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
+                <div>NA</div>
+                <div>UA</div>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>R</div>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>X</div>
+                <div>Insp</div>
+                <div>None</div>
+                <div>Minor</div>
+                <div>Fair</div>
+                <div>Poor</div>
+                <div>Severe</div>
+                <div>Local</div>
+                <div>&gt;Local</div>
+                <div>&lt;Gnl</div>
+                <div>General</div>
+                <div>Min</div>
+                <div>Moderate</div>
+                <div>Major</div>
+                <div>Critical</div>
+                <div>Record</div>
+                <div>Monitor</div>
+                <div>Routine</div>
+                <div>&lt;10 yrs</div>
+                <div>&gt;5 yrs</div>
+                <div>ASAP</div>
             </div>
         </div>
     </div>
 
     <script type="module" src="/app.js"></script>
 </body>
+
 </html>

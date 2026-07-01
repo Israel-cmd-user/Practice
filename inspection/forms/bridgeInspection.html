@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/styles/form.css"/>
+    <link rel="stylesheet" href="/styles/form.css" />
 </head>
+
 <body>
 
     <div class="action-bar" id="no-print-actions">
         <h2>Bridge Inspections Sheet</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export to PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export to Excel</button>
-            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save Progress</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export to
+                PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export to
+                Excel</button>
+            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save
+                Progress</button>
         </div>
     </div>
 
     <div class="document-page" id="inspection-report">
-        
+
         <div class="doc-header">
             <div class="doc-header-left">
                 <h3>Bridge Inspection Sheet</h3>
             </div>
             <div class="doc-header-right">
-                <strong>Print Date:</strong> 
+                <strong>Print Date:</strong>
                 <input type="text" id="inspection-datetime" style="width:140px; display:inline-block;"><br>
                 <input type="text" value="" style="width:220px; text-align:right;">
             </div>
@@ -36,7 +41,7 @@
         <table class="form-grid">
             <tr>
                 <td rowspan="2" style="width: 25%; text-align: center; vertical-align: middle;">
-                    <img src="/assets/logo.png" style="width: 90%; margin: 5%;" alt="Logo"/>
+                    <img src="/assets/logo.png" style="width: 90%; margin: 5%;" alt="Logo" />
                 </td>
                 <th style="width: 20%;">Structure Type</th>
                 <th style="width: 15%;">Structure Number</th>
@@ -55,29 +60,50 @@
             <div>
                 <div class="section-title">Inspection Information</div>
                 <table class="form-grid">
-                    <tr><th>Inspector Name</th><td><input type="text"></td></tr>
-                    <tr><th>Firm</th><td>
-                        <select style="width:100%;">
-                            <option value="" disabled selected hidden></option>
-                            <option>Smec Namibia</option>
-                            <option>Sce</option>
-                        </select></td></tr>
+                    <tr>
+                        <th>Inspector Name</th>
+                        <td><input type="text" list="inspector-names" id="inspector-name-input"
+                                style="width:100%;"><datalist id="inspector-names"></datalist></td>
+                    </tr>
+                    <tr>
+                        <th>Firm</th>
+                        <td>
+                            <select style="width:100%;">
+                                <option value="" disabled selected hidden></option>
+                                <option>Smec Namibia</option>
+                                <option>Sce</option>
+                            </select>
+                        </td>
+                    </tr>
                     <tr>
                         <th>Date</th>
                         <td><input type="date" id="inspection-date" style="border: none; width: 100%;"></td>
                     </tr>
-                    <tr><th></th><td>&nbsp;</td></tr>
+                    <tr>
+                        <th></th>
+                        <td>&nbsp;</td>
+                    </tr>
                 </table>
             </div>
             <div>
                 <div class="section-title">Classification</div>
                 <table class="form-grid">
-                    <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
-                    <tr><th>Size Category</th><td><input type="text"></td></tr>
-                    <tr><th>No of spans</th><td><input type="number" id="classification-spans" value="2" min="1"></td></tr>
+                    <tr>
+                        <th style="width:35%;">Asset Class</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Size Category</th>
+                        <td><select id="size-category" style="width:100%;"></select></td>
+                    </tr>
+                    <tr>
+                        <th>No of spans</th>
+                        <td><input type="number" id="classification-spans" value="2" min="1"></td>
+                    </tr>
                     <tr>
                         <th>GPS Coordinates</th>
-                        <td>Lon: <input type="text" id="geo-lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="geo-lat" style="width:30%; display:inline-block;"></td>
+                        <td>Lon: <input type="text" id="geo-lon" style="width:40%; display:inline-block;"> Lat: <input
+                                type="text" id="geo-lat" style="width:30%; display:inline-block;"></td>
                     </tr>
                 </table>
             </div>
@@ -98,15 +124,22 @@
                     </tr>
                     <tr>
                         <th>Length</th>
-                        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                        <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
                     </tr>
                 </table>
             </div>
             <div>
                 <div class="section-title">Minimum Vertical Clearance (m)</div>
                 <table class="form-grid cell-center">
-                    <tr><th>Position</th><th>Minimum Clearance</th></tr>
+                    <tr>
+                        <th>Position</th>
+                        <th>Minimum Clearance</th>
+                    </tr>
                     <tr>
                         <td><input type="text" value=""></td>
                         <td><input type="text"></td>
@@ -119,25 +152,68 @@
             <div>
                 <div class="section-title">Location Details</div>
                 <table class="form-grid" style="text-align: left;">
-                    <tr><th style="width:35%;">Road Number</th><td><input type="text"></td></tr>
-                    <tr><th>Road km / Chainage</th><td><input type="text"></td></tr>
-                    <tr><th>Maintenance Region</th><td><input type="text"></td></tr>
-                    <tr><th>Feature Crossed</th><td><input type="text"></td></tr>
-                    <tr><th>Feature Name</th><td><input type="text" style="font-weight:bold;"></td></tr>
-                    <tr><th></th><td style="padding: 0.9% 0;">&nbsp;</td></tr>
-                    <tr><th></th><td style="padding: 0.9% 0;">&nbsp;</td></tr>
+                    <tr>
+                        <th style="width:35%;">Road Number</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Road km / Chainage</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Maintenance Region</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Feature Crossed</th>
+                        <td><select id="feature-crossed" style="width:100%;"></select></td>
+                    </tr>
+                    <tr>
+                        <th>Feature Name</th>
+                        <td><input type="text" style="font-weight:bold;"></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td style="padding: 0.9% 0;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td style="padding: 0.9% 0;">&nbsp;</td>
+                    </tr>
                 </table>
             </div>
             <div>
                 <div class="section-title">Structure Information</div>
                 <table class="form-grid" style="text-align: left;">
-                    <tr><th style="width:40%;">Bridge Type</th><td><input type="text"></td></tr>
-                    <tr><th>Year constructed</th><td><input type="text"></td></tr>
-                    <tr><th>Bridge orientation</th><td><input type="text"></td></tr>
-                    <tr><th>No of spans</th><td><input type="number" id="structure-spans" readonly></td></tr>
-                    <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
-                    <tr><th>Width between kerbs</th><td><input type="number"></td></tr>
-                    <tr><th>Angle of skew</th><td><input type="number"></td></tr>
+                    <tr>
+                        <th style="width:40%;">Bridge Type</th>
+                        <td><select id="bridge-type" style="width:100%;"></select></td>
+                    </tr>
+                    <tr>
+                        <th>Year constructed</th>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <th>Bridge orientation</th>
+                        <td><select id="bridge-orientation" style="width:100%;"></select></td>
+                    </tr>
+                    <tr>
+                        <th>No of spans</th>
+                        <td><input type="number" id="structure-spans" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Overall Dim. (L / W)</th>
+                        <td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text"
+                                style="width:30%; display:inline-block;"></td>
+                    </tr>
+                    <tr>
+                        <th>Width between kerbs</th>
+                        <td><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <th>Angle of skew</th>
+                        <td><input type="number"></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -148,49 +224,223 @@
                 <table class="form-grid matrix-table">
                     <tr>
                         <th style="text-align: left;">General Items</th>
-                        <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
-                        <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pos</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pos</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
                     <tr>
-                        <td>01. Approach Embankment</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>01. Approach Embankment</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="ApproachEmbankment"
+                                data-item-label="01. Approach Embankment" data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="ApproachEmbankment"
+                                data-item-label="01. Approach Embankment" data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>02. Guardrail</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>02. Guardrail</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="Guardrail" data-item-label="02. Guardrail"
+                                data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="Guardrail" data-item-label="02. Guardrail"
+                                data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>03. Waterway</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>03. Waterway</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="Waterway" data-item-label="03. Waterway"
+                                data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="Waterway" data-item-label="03. Waterway"
+                                data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>04. Approach Embankment Protect.</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>04. Approach Embankment Protect.</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="ApproachEmbankmentProtect"
+                                data-item-label="04. Approach Embankment Protect." data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="ApproachEmbankmentProtect"
+                                data-item-label="04. Approach Embankment Protect." data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>05. Abutment Foundations</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>05. Abutment Foundations</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="AbutmentsFoundations"
+                                data-item-label="05. Abutment Foundations" data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="AbutmentsFoundations"
+                                data-item-label="05. Abutment Foundations" data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>06. Abutments</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>06. Abutments</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="Abutments" data-item-label="06. Abutments"
+                                data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="Abutments" data-item-label="06. Abutments"
+                                data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>07. Wing/Retaining Walls</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td>07. Wing/Retaining Walls</td>
+                        <td class="cell-center">A1</td>
+                        <td>
+                            <div class="rating-box" data-item-key="WingRetainingWalls"
+                                data-item-label="07. Wing/Retaining Walls" data-position="A1">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td class="cell-center">A2</td>
+                        <td>
+                            <div class="rating-box" data-item-key="WingRetainingWalls"
+                                data-item-label="07. Wing/Retaining Walls" data-position="A2">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
                     </tr>
-                    <tr><td>08. Surfacing</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>09. Superstructure Drainage</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>10. Kerbs / Sidewalks</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>11. Parapet</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>21. Miscellaneous Items</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr>
+                        <td>08. Surfacing</td>
+                        <td class="cell-center"></td>
+                        <td>
+                            <div class="rating-box" data-item-key="Surfacing" data-item-label="08. Surfacing"
+                                data-position="">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td colspan="2" style="background:#f1f5f9;"></td>
+                    </tr>
+                    <tr>
+                        <td>09. Superstructure Drainage</td>
+                        <td class="cell-center"></td>
+                        <td>
+                            <div class="rating-box" data-item-key="SuperstructureDrainage"
+                                data-item-label="09. Superstructure Drainage" data-position="">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td colspan="2" style="background:#f1f5f9;"></td>
+                    </tr>
+                    <tr>
+                        <td>10. Kerbs / Sidewalks</td>
+                        <td class="cell-center"></td>
+                        <td>
+                            <div class="rating-box" data-item-key="KerbsSidewalks"
+                                data-item-label="10. Kerbs / Sidewalks" data-position="">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td colspan="2" style="background:#f1f5f9;"></td>
+                    </tr>
+                    <tr>
+                        <td>11. Parapet</td>
+                        <td class="cell-center"></td>
+                        <td>
+                            <div class="rating-box" data-item-key="Parapet" data-item-label="11. Parapet"
+                                data-position="">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td colspan="2" style="background:#f1f5f9;"></td>
+                    </tr>
+                    <tr>
+                        <td>21. Miscellaneous Items</td>
+                        <td class="cell-center"></td>
+                        <td>
+                            <div class="rating-box" data-item-key="MiscellaneousItems"
+                                data-item-label="21. Miscellaneous Items" data-position="">
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                                <div><input type="text" placeholder="-"></div>
+                            </div>
+                        </td>
+                        <td colspan="2" style="background:#f1f5f9;"></td>
+                    </tr>
                 </table>
             </div>
 
@@ -198,8 +448,10 @@
                 <table class="form-grid matrix-table">
                     <tr>
                         <th style="text-align: left;">Pier Items</th>
-                        <th style="width:20px;">Pier</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
-                        <th style="width:20px;">Pier</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pier</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pier</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
                     <tbody id="pier-items-body">
                         <!-- Dynamic rows will be inserted here -->
@@ -211,8 +463,10 @@
                 <table class="form-grid matrix-table">
                     <tr>
                         <th style="text-align: left;">Other Support Items</th>
-                        <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
-                        <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pos</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pos</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
                     <tbody id="support-items-body">
                         <!-- Dynamic rows will be inserted here -->
@@ -224,8 +478,10 @@
                 <table class="form-grid matrix-table">
                     <tr>
                         <th style="text-align: left;">Span Items</th>
-                        <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
-                        <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pos</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
+                        <th style="width:20px;">Pos</th>
+                        <th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
                     <tbody id="span-items-body">
                         <!-- Dynamic rows will be inserted here -->
@@ -235,22 +491,36 @@
         </div>
 
         <div class="section-title">Remedial Work Recommendations</div>
-            <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
-                <colgroup>
-                    <col style="width: 5%;"><col style="width: 18%;"><col style="width: 7%;">
-                    <col style="width: 22%;"><col style="width: 6%;"><col style="width: 6%;">
-                    <col style="width: 5%;"><col style="width: 5%;"><col style="width: 18%;">
-                    <col style="width: 8%;">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>Item</th><th>Inspection Item</th><th>Pos</th><th>Activity Description</th>
-                        <th>Qty</th><th>Unit</th><th>Urg</th><th>MS</th><th>Remarks</th><th>Photo</th>
-                    </tr>
-                </thead>
-                
-                <tbody id="remedial-table-tbody"></tbody> 
-            </table>
+        <table class="form-grid" id="remedial-table" style="font-size:10px; table-layout:fixed;">
+            <colgroup>
+                <col style="width: 5%;">
+                <col style="width: 18%;">
+                <col style="width: 7%;">
+                <col style="width: 22%;">
+                <col style="width: 6%;">
+                <col style="width: 6%;">
+                <col style="width: 5%;">
+                <col style="width: 5%;">
+                <col style="width: 18%;">
+                <col style="width: 8%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Inspection Item</th>
+                    <th>Pos</th>
+                    <th>Activity Description</th>
+                    <th>Qty</th>
+                    <th>Unit</th>
+                    <th>Urg</th>
+                    <th>MS</th>
+                    <th>Remarks</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+
+            <tbody id="remedial-table-tbody"></tbody>
+        </table>
 
         <div class="section-title">Inspector's Assessment & Comments</div>
         <table class="form-grid">
@@ -267,9 +537,7 @@
             <tr>
                 <th>Inspector's Comments</th>
                 <td>
-                    <textarea 
-                        rows="1" 
-                        style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
+                    <textarea rows="1" style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;"
                         oninput="autoGrow(this)">
                     </textarea>
                 </td>
@@ -284,15 +552,56 @@
                 <div class="cat-title cat-r">R - RELEVANCY</div>
                 <div class="cat-title cat-u">U - URGENCY</div>
 
-                <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
+                <div>NA</div>
+                <div>UA</div>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>R</div>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>X</div>
+                <div>Insp</div>
+                <div>None</div>
+                <div>Minor</div>
+                <div>Fair</div>
+                <div>Poor</div>
+                <div>Severe</div>
+                <div>Local</div>
+                <div>&gt;Local</div>
+                <div>&lt;Gnl</div>
+                <div>General</div>
+                <div>Min</div>
+                <div>Moderate</div>
+                <div>Major</div>
+                <div>Critical</div>
+                <div>Record</div>
+                <div>Monitor</div>
+                <div>Routine</div>
+                <div>&lt;10 yrs</div>
+                <div>&gt;5 yrs</div>
+                <div>ASAP</div>
             </div>
         </div>
     </div>
 
-
-
     <script type="module" src="/app.js"></script>
     <script type="module" src="/scripts/inventoryPhotos.js"></script>
     <script type="module" src="/scripts/dynamicSpans.js"></script>
+    <script type="module" src="/components/remedialEngine.js"></script>
 </body>
+
 </html>
