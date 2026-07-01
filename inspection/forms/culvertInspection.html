@@ -74,7 +74,7 @@
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
                     <tr><th>Size Category</th><td><input type="text"></td></tr>
-                    <tr><th>No of cells</th><td><input type="text"></td></tr>
+                    <tr><th>No of cells</th><td><input type="number" id="classification-cells" value="2" min="1"></td></tr>
                     <tr><th>GPS Coordinates</th><td>Lon: <input type="text" id="lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="lat" style="width:30%; display:inline-block;"></td></tr>
                 </table>
             </div>
@@ -131,7 +131,7 @@
                     <tr><th style="width:40%;">Culvert Type</th><td><input type="text"></td></tr>
                     <tr><th>Year constructed</th><td><input type="text"></td></tr>
                     <tr><th>Culvert orientation</th><td><input type="text"></td></tr>
-                    <tr><th>No of cells</th><td><input type="number"></td></tr>
+                    <tr><th>No of cells</th><td><input type="number" id="structure-cells" readonly></td></tr>
                     <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
                     <tr><th>Min Clear Width (m)</th><td><input type="number"></td></tr>
                     <tr><th>Angle of skew</th><td><input type="number"></td></tr>
@@ -203,21 +203,8 @@
                     <th>D</th><th>E</th><th>R</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr data-row-id="1">
-                    <td>1</td>
-                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                    <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
-                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                </tr>
-                <tr data-row-id="2">
-                    <td>2</td>
-                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                    <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
-                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                </tr>
+            <tbody id="specific-positions-body">
+                <!-- Dynamic rows will be inserted here -->
             </tbody>
         </table>
 
@@ -276,33 +263,10 @@
         </div>
     </div>
 
-    <div id="photo-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Media Attachments - View <span id="modal-item-id">0</span></h3>
-                <button type="button" class="close-modal-btn" onclick="closePhotoModal()">&times;</button>
-            </div>
-            <div class="modal-actions">
-                <button type="button" class="btn btn-add-photo" onclick="triggerCameraInput()">
-                    <i class="fa-solid fa-camera"></i> Take Photo
-                </button>
-                <button type="button" class="btn btn-add-photo" onclick="triggerGalleryInput()">
-                    <i class="fa-solid fa-images"></i> Photo Gallery
-                </button>
-                <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()">
-                    Delete Selected
-                </button>
-            </div>
-            <div id="modal-gallery" class="modal-gallery"></div>
-        </div>
-    </div>
 
-    <div id="image-viewer-modal" class="viewer-overlay" style="display: none;" onclick="closeImageViewer()">
-        <span class="close-viewer">&times;</span>
-        <img class="viewer-content" id="full-screen-image" src="" alt="Inspection Zoom View">
-    </div>
 
     <script type="module" src="/app.js"></script>
     <script type="module" src="/scripts/inventoryPhotos.js"></script>
+    <script type="module" src="/scripts/dynamicCells.js"></script>
 </body>
 </html>

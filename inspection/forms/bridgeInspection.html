@@ -74,7 +74,7 @@
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
                     <tr><th>Size Category</th><td><input type="text"></td></tr>
-                    <tr><th>No of spans</th><td><input type="text"></td></tr>
+                    <tr><th>No of spans</th><td><input type="number" id="classification-spans" value="2" min="1"></td></tr>
                     <tr>
                         <th>GPS Coordinates</th>
                         <td>Lon: <input type="text" id="geo-lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="geo-lat" style="width:30%; display:inline-block;"></td>
@@ -134,7 +134,7 @@
                     <tr><th style="width:40%;">Bridge Type</th><td><input type="text"></td></tr>
                     <tr><th>Year constructed</th><td><input type="text"></td></tr>
                     <tr><th>Bridge orientation</th><td><input type="text"></td></tr>
-                    <tr><th>No of spans</th><td><input type="number"></td></tr>
+                    <tr><th>No of spans</th><td><input type="number" id="structure-spans" readonly></td></tr>
                     <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
                     <tr><th>Width between kerbs</th><td><input type="number"></td></tr>
                     <tr><th>Angle of skew</th><td><input type="number"></td></tr>
@@ -201,32 +201,9 @@
                         <th style="width:20px;">Pier</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
                         <th style="width:20px;">Pier</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
-                    <tr>
-                        <td rowspan="4">12. Pier Protection Works</td><td class="cell-center">P1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center">P5</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P6</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center">P7</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P8</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    
-                    <tr>
-                        <td rowspan="4">13. Pier Foundations</td><td class="cell-center">P1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center">P5</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P6</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center">P7</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P8</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    
-                    <tr>
-                        <td rowspan="4">14. Piers & Columns</td><td class="cell-center">P1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">P2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center">P3</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P4</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center">P5</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P6</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center">P7</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center">P8</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tbody id="pier-items-body">
+                        <!-- Dynamic rows will be inserted here -->
+                    </tbody>
                 </table>
             </div>
 
@@ -237,32 +214,9 @@
                         <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
                         <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
-                    <tr>
-                        <td rowspan="4">15. Bearings</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    
-                    <tr>
-                        <td rowspan="4">16. Support Drainage</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    
-                    <tr>
-                        <td rowspan="4">17. Expansion Joints</td><td class="cell-center">A1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">A2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td class="cell-center"><input type="text" placeholder="-"/></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td></tr>
+                    <tbody id="support-items-body">
+                        <!-- Dynamic rows will be inserted here -->
+                    </tbody>
                 </table>
             </div>
 
@@ -273,32 +227,9 @@
                         <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
                         <th style="width:20px;">Pos</th><th style="width:55px;">D &nbsp; E &nbsp; R</th>
                     </tr>
-                    <tr>
-                        <td rowspan="4">18. Longitudinal Members</td><td class="cell-center"><input type="text" placeholder="-"></td>
-                        <td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
-                        <td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    
-                    <tr>
-                        <td rowspan="4">19. Transverse Members</td><td class="cell-center"><input type="number" placeholder="-"></td>
-                        <td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
-                        <td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-
-                    <tr>
-                        <td rowspan="4">20. Decks and Slabs</td><td class="cell-center"><input type="number" placeholder="-"></td>
-                        <td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
-                        <td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td>
-                    </tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
-                    <tr><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td><td class="cell-center"><input type="number" placeholder="-"></td><td><div class="rating-box"><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div><div><input type="number" placeholder="-"></div></div></td></tr>
+                    <tbody id="span-items-body">
+                        <!-- Dynamic rows will be inserted here -->
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -358,35 +289,10 @@
         </div>
     </div>
 
-    <div id="photo-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Media Attachments - Image <span id="modal-item-id">0</span></h3>
-                <button type="button" class="close-modal-btn" onclick="closePhotoModal()">&times;</button>
-            </div>
-            
-            <div class="modal-actions">
-                <button type="button" class="btn btn-add-photo" onclick="triggerCameraInput()">
-                    <i class="fa-solid fa-camera"></i> Take Photo
-                </button>
-                <button type="button" class="btn btn-add-photo" onclick="triggerGalleryInput()">
-                    <i class="fa-solid fa-images"></i> Photo Gallery
-                </button>
-                <button type="button" class="btn btn-danger" onclick="deleteSelectedPhotos()">
-                    Delete Selected
-                </button>
-            </div>
-            
-            <div id="modal-gallery" class="modal-gallery"></div>
-        </div>
-    </div>
 
-    <div id="image-viewer-modal" class="viewer-overlay" style="display: none;" onclick="closeImageViewer()">
-        <span class="close-viewer">&times;</span>
-        <img class="viewer-content" id="full-screen-image" src="" alt="Inspection Zoom View">
-    </div>
 
     <script type="module" src="/app.js"></script>
     <script type="module" src="/scripts/inventoryPhotos.js"></script>
+    <script type="module" src="/scripts/dynamicSpans.js"></script>
 </body>
 </html>
