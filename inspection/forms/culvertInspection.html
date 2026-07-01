@@ -55,7 +55,7 @@
             <div>
                 <div class="section-title">Inspection Information</div>
                 <table class="form-grid">
-                    <tr><th>Inspector Name</th><td><input type="text"></td></tr>
+                    <tr><th>Inspector Name</th><td><input type="text" list="inspector-names"><datalist id="inspector-names"></datalist></td></tr>
                     <tr><th>Firm</th><td>
                         <select style="width:100%;">
                             <option value="" disabled selected hidden></option>
@@ -73,7 +73,7 @@
                 <div class="section-title">Classification</div>
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
-                    <tr><th>Size Category</th><td><input type="text"></td></tr>
+                    <tr><th>Size Category</th><td><select id="size-category-cul" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>No of cells</th><td><input type="number" id="classification-cells" value="2" min="1"></td></tr>
                     <tr><th>GPS Coordinates</th><td>Lon: <input type="text" id="lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="lat" style="width:30%; display:inline-block;"></td></tr>
                 </table>
@@ -119,7 +119,7 @@
                     <tr><th style="width:35%;">Road Number</th><td><input type="text"></td></tr>
                     <tr><th>Road km / Chainage</th><td><input type="text"></td></tr>
                     <tr><th>Maintenance Region</th><td><input type="text"></td></tr>
-                    <tr><th>Feature Crossed</th><td><input type="text"></td></tr>
+                    <tr><th>Feature Crossed</th><td><select id="feature-crossed" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>Feature Name</th><td><input type="text" style="font-weight:bold;"></td></tr>
                     <tr><th></th><td style="padding: 0.9% 0;">&nbsp;</td></tr>
                     <tr><th></th><td style="padding: 0.9% 0;">&nbsp;</td></tr>
@@ -128,9 +128,9 @@
             <div>
                 <div class="section-title">Structure Information</div>
                 <table class="form-grid" style="text-align: left;">
-                    <tr><th style="width:40%;">Culvert Type</th><td><input type="text"></td></tr>
+                    <tr><th style="width:40%;">Culvert Type</th><td><select id="culvert-type" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>Year constructed</th><td><input type="text"></td></tr>
-                    <tr><th>Culvert orientation</th><td><input type="text"></td></tr>
+                    <tr><th>Culvert orientation</th><td><select id="culvert-orientation" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>No of cells</th><td><input type="number" id="structure-cells" readonly></td></tr>
                     <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
                     <tr><th>Min Clear Width (m)</th><td><input type="number"></td></tr>
@@ -150,30 +150,30 @@
                     </tr>
                     <tr>
                         <td>01. Apron Slabs & Cut Off Walls</td><td class="cell-center">E1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">E2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td><div class="rating-box" data-item-key="ApronSlabs" data-item-label="01. Apron Slabs & Cut Off Walls" data-position="E1"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">E2</td><td><div class="rating-box" data-item-key="ApronSlabs" data-item-label="01. Apron Slabs & Cut Off Walls" data-position="E2"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>02. Wing / Ret / Head Walls</td><td class="cell-center">E1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">E2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td><div class="rating-box" data-item-key="WingRetHeadWalls" data-item-label="02. Wing / Ret / Head Walls" data-position="E1"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">E2</td><td><div class="rating-box" data-item-key="WingRetHeadWalls" data-item-label="02. Wing / Ret / Head Walls" data-position="E2"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>03. Scour Protection Works</td><td class="cell-center">E1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">E2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td><div class="rating-box" data-item-key="ScourProtectionWorks" data-item-label="03. Scour Protection Works" data-position="E1"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">E2</td><td><div class="rating-box" data-item-key="ScourProtectionWorks" data-item-label="03. Scour Protection Works" data-position="E2"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
                     <tr>
                         <td>04. Embankment/s</td><td class="cell-center">E1</td>
-                        <td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
-                        <td class="cell-center">E2</td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td><div class="rating-box" data-item-key="Embankments" data-item-label="04. Embankment/s" data-position="E1"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
+                        <td class="cell-center">E2</td><td><div class="rating-box" data-item-key="Embankments" data-item-label="04. Embankment/s" data-position="E2"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td>
                     </tr>
-                    <tr><td>05. Waterway</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>06. Road slabs</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>07. Road Joints</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>08. Guardrails</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>09. Parapets/Handrails</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
-                    <tr><td>14. Miscellaneous Items</td><td class="cell-center"></td><td><div class="rating-box"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>05. Waterway</td><td class="cell-center"></td><td><div class="rating-box" data-item-key="Waterway" data-item-label="05. Waterway" data-position="G"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>06. Road slabs</td><td class="cell-center"></td><td><div class="rating-box" data-item-key="RoadSlabs" data-item-label="06. Road slabs" data-position="G"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>07. Road Joints</td><td class="cell-center"></td><td><div class="rating-box" data-item-key="RoadJoints" data-item-label="07. Road Joints" data-position="G"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>08. Guardrails</td><td class="cell-center"></td><td><div class="rating-box" data-item-key="Guardrails" data-item-label="08. Guardrails" data-position="G"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>09. Parapets/Handrails</td><td class="cell-center"></td><td><div class="rating-box" data-item-key="ParapetsHandrails" data-item-label="09. Parapets/Handrails" data-position="G"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
+                    <tr><td>14. Miscellaneous Items</td><td class="cell-center"></td><td><div class="rating-box" data-item-key="MiscellaneousItems" data-item-label="14. Miscellaneous Items" data-position="G"><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div><div><input type="text" placeholder="-"></div></div></td><td colspan="2" style="background:#f1f5f9;"></td></tr>
                 </table>
             </div>
         </div>
@@ -268,5 +268,6 @@
     <script type="module" src="/app.js"></script>
     <script type="module" src="/scripts/inventoryPhotos.js"></script>
     <script type="module" src="/scripts/dynamicCells.js"></script>
+    <script type="module" src="/components/managers/remedialEngine.js"></script>
 </body>
 </html>

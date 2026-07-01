@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +13,23 @@
     <link rel="stylesheet" href="/styles/form.css">
     <link rel="stylesheet" href="/styles/inventory.css">
 </head>
+
 <body>
 
     <div class="action-bar" id="no-print-actions">
         <h2>Culvert Inventory Assessment</h2>
         <div class="btn-group">
-            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export PDF</button>
-            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export Excel</button>
-            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save Progress</button>
+            <button onclick="exportToPDF()" class="btn btn-pdf"><i class="fa-regular fa-file-pdf"></i> Export
+                PDF</button>
+            <button onclick="exportToExcel()" class="btn btn-excel"><i class="fa-regular fa-file-excel"></i> Export
+                Excel</button>
+            <button onclick="saveFile()" class="btn btn-save"><i class="fa-regular fa-floppy-disk"></i> Save
+                Progress</button>
         </div>
     </div>
 
     <div class="document-page">
-        
+
         <div class="doc-header">
             <div class="doc-header-left">
                 <h3>Major Culvert Inventory Sheet</h3>
@@ -38,23 +43,26 @@
         <table class="form-grid">
             <tr>
                 <td rowspan="2" style="width: 25%; text-align: center; vertical-align: middle;">
-                    <img src="/assets/logo.png" style="width: 90%; margin: 5%;" alt="Logo"/>
+                    <img src="/assets/logo.png" style="width: 90%; margin: 5%;" alt="Logo" />
                 </td>
                 <th style="width: 20%;">Structure Type</th>
-                <th style="width: 15%;">Structure Number</th>
                 <th style="width: 20%;">Structure Name</th>
+                <th style="width: 10%;">Structure No</th>
+                <th style="width: 10%;">No. of Cells</th>
                 <th style="width: 10%;">PCI Score</th>
             </tr>
             <tr>
                 <td><input type="text" class="filled"></td>
                 <td><input type="text" class="filled" style="font-weight: bold; color: var(--primary-color);"></td>
                 <td><input type="text" class="filled"></td>
+                <td><input type="number" id="inventory-cells" class="filled" value="2" min="1"></td>
                 <td><input type="text" class="filled" style="color: red; font-weight: bolder; font-size: larger;"></td>
             </tr>
         </table>
 
         <div class="section-title">1. Field Geospatial Preview</div>
-        <div class="location-preview-zone" id="gps-capture-panel" title="Click panel space to synchronize location telemetry">
+        <div class="location-preview-zone" id="gps-capture-panel"
+            title="Click panel space to synchronize location telemetry">
             <div class="telemetry-controls">
                 <div class="telemetry-instruction">
                     <i class="fa-solid fa-satellite-dish"></i> Click panel to synchronise live coordinate preview
@@ -83,45 +91,34 @@
                 <tbody>
                     <tr>
                         <th style="width: 25%;">Structure Name</th>
-                        <td style="width: 25%;"><input type="text" name="structure_name" placeholder="Enter name..."></td>
+                        <td style="width: 25%;"><input type="text" name="structure_name" placeholder="Enter name...">
+                        </td>
                         <th style="width: 25%;">Size Category</th>
                         <td style="width: 25%;">
-                            <select name="size_category" required>
+                            <select id="size-category-cul" name="size_category" required>
                                 <option value="" disabled selected>Select category...</option>
-                                <option value="small">Small Structure</option>
-                                <option value="medium">Medium Structure</option>
-                                <option value="large">Large/Major Structure</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <th>Culvert Type</th>
                         <td>
-                            <select name="bridge_type" required>
+                            <select id="culvert-type" name="bridge_type" required>
                                 <option value="" disabled selected>Select type...</option>
-                                <option value="concrete">Reinforced Concrete</option>
-                                <option value="steel">Structural Steel</option>
-                                <option value="masonry">Masonry Arch</option>
                             </select>
                         </td>
                         <th>Structure Orientation</th>
                         <td>
-                            <select name="structure_orientation" required>
+                            <select id="culvert-orientation" name="structure_orientation" required>
                                 <option value="" disabled selected>Select orientation...</option>
-                                <option value="skew">Skewed</option>
-                                <option value="square">Square</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <th>Feature Crossed</th>
                         <td>
-                            <select name="feature_crossed" required>
+                            <select id="feature-crossed" name="feature_crossed" required>
                                 <option value="" disabled selected>Select feature...</option>
-                                <option >Watercourse / River</option>
-                                <option >Roadway Interchange</option>
-                                <option >Railway Corridor</option>
-
                             </select>
                         </td>
                         <th>Year Constructed</th>
@@ -130,80 +127,51 @@
                     <tr>
                         <th>Direction of River Flow</th>
                         <td>
-                            <select name="river_flow_direction">
-                                <option value="">N/A or Select...</option>
-                                <option value="N">North</option>
-                                <option value="S">South</option>
-                                <option value="E">East</option>
-                                <option value="W">West</option>
-                                <option value="NA">NA</option>
-                                <option value="Unknown">Unknown</option>
+                            <select id="river-flow-direction" name="river_flow_direction">
+                                <option value="" disabled selected>N/A or Select...</option>
                             </select>
                         </td>
                         <th>Road Over/Under</th>
                         <td>
-                            <select name="road_over_under" required>
+                            <select id="road-over-under" name="road_over_under" required>
                                 <option value="" disabled selected>Select profile...</option>
-                                <option value="over">Over only</option>
-                                <option value="under">Under only</option>
-                                <option value="adjacent">Adjacent</option>
-                                <option value="NA">NA</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <th>Overall Structure Length (m)</th>
-                        <td><input type="number" step="any" name="overall_length" placeholder="Eg. 123.56" required></td>
+                        <td><input type="number" step="any" name="overall_length" placeholder="Eg. 123.56" required>
+                        </td>
                         <th>Overall Structure Width (m)</th>
                         <td><input type="number" step="any" name="overall_width" placeholder="Eg. 12.45" required></td>
                     </tr>
                     <tr>
                         <th>Minimum Clear Width (m)</th>
-                        <td><input type="number" step="any" name="width_between_kerb" placeholder="Eg. 11.20" required></td>
+                        <td><input type="number" step="any" name="width_between_kerb" placeholder="Eg. 11.20" required>
+                        </td>
                         <th>Overall Cell Length (m)</th>
-                        <td><input type="number" step="any" name="overall_cell_length_profile" placeholder="Eg. 11.20" required></td>
+                        <td><input type="number" step="any" name="overall_cell_length_profile" placeholder="Eg. 11.20"
+                                required></td>
                     </tr>
                     <tr>
                         <th>Vertical Alignment</th>
                         <td>
-                            <select name="vertical_alignment" required>
-                                <option value="">Select geometry...</option>
-                                <option >Flat or level bridge</option>
-                                <option >Sag or curved</option>
-                                <option >Crest Cuver</option>
-                                <option >Not sure</option>
-                                <option >Other</option>
-                                <option >NA</option>
+                            <select id="vertical-alignment" name="vertical_alignment" required>
+                                <option value="" disabled selected>Select geometry...</option>
                             </select>
                         </td>
                         <th>Horizontal Alignment</th>
                         <td>
-                            <select name="horizontal_alignment" required>
-                                <option value="">Select geometry...</option>
-                                <option >Not Sure</option>
-                                <option >Straight</option>
-                                <option >Skew</option>
-                                <option >Curverd</option>
-                                <option >Spiral</option>
-                                <option >Compound Curve</option>
-                                <option >Parallel</option>
-                                <option >Transition Curves</option>
-                                <option >Reverse Curve</option>
-                                <option >Super-elevation</option>
-                                <option >Other</option>
-                                <option >NA</option>
+                            <select id="horizontal-alignment" name="horizontal_alignment" required>
+                                <option value="" disabled selected>Select geometry...</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <th>Camber or Crossfall</th>
                         <td>
-                            <select name="camber_crossfall">
-                                <option value="">Select profile...</option>
-                                <option >Camber</option>
-                                <option >Crossfall</option>
-                                <option >Not Sure</option>
-                                <option >NA</option>
+                            <select id="camber-crossfall" name="camber_crossfall">
+                                <option value="" disabled selected>Select profile...</option>
                             </select>
                         </td>
                         <th>Angle of Skew (°)</th>
@@ -220,17 +188,15 @@
                         <td><input type="number" step="any" name="min_cell_height" placeholder="Eg. 5.20"></td>
                         <th>Position of Minimum Vertical Clearance</th>
                         <td>
-                            <div class="rating-box">
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="expansion_joint_loc" value="AS" style="width:13px; height:13px;"> AS</label></div>
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="expansion_joint_loc" value="S1" style="width:13px; height:13px;"> S1</label></div>
-                                <div><label style="padding:0 4px; font-size:10px;"><input type="checkbox" name="expansion_joint_loc" value="S2" style="width:13px; height:13px;"> S2</label></div>
+                            <div class="rating-box" id="min-clearance-checkboxes">
                             </div>
                         </td>
                     </tr>
-                    <tr> 
+                    <tr>
                         <th>Minimum Vertical Clearance (m)</th>
                         <td colspan="3">
-                            <input type="number" step="any" name="min_vertical_clearance" placeholder="Eg. 5.20" style="width: 100%;">
+                            <input type="number" step="any" name="min_vertical_clearance" placeholder="Eg. 5.20"
+                                style="width: 100%;">
                         </td>
                     </tr>
                 </tbody>
@@ -247,7 +213,8 @@
                 <tbody>
                     <tr>
                         <td style="font-weight: 600; background-color: var(--bg-light);">Cell Length Component</td>
-                        <td><input type="number" step="any" name="span_length_as" placeholder="Enter dimension to two decimals (Eg. 24.50)"></td>
+                        <td><input type="number" step="any" name="span_length_as"
+                                placeholder="Enter dimension to two decimals (Eg. 24.50)"></td>
                     </tr>
                 </tbody>
             </table>
@@ -264,7 +231,7 @@
                 <tbody id="photo-inventory-tbody"></tbody>
             </table>
         </form>
-        
+
         <div class="section-title">Inspector's Assessment & Comments</div>
         <table class="form-grid">
             <tr>
@@ -280,9 +247,7 @@
             <tr>
                 <th>Inspector's Comments</th>
                 <td>
-                    <textarea 
-                        rows="1" 
-                        style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;" 
+                    <textarea rows="1" style="resize: none; line-height: 1.5em; max-height: 7.5em; overflow-y: hidden;"
                         oninput="autoGrow(this)">
                     </textarea>
                 </td>
@@ -297,7 +262,48 @@
                 <div class="cat-title cat-r">R - RELEVANCY</div>
                 <div class="cat-title cat-u">U - URGENCY</div>
 
-                <div>NA</div><div>UA</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>1</div><div>2</div><div>3</div><div>4</div> <div>R</div><div>0</div><div>1</div><div>2</div><div>3</div><div>4</div> <div>X</div><div>Insp</div><div>None</div><div>Minor</div><div>Fair</div><div>Poor</div><div>Severe</div> <div>Local</div><div>&gt;Local</div><div>&lt;Gnl</div><div>General</div> <div>Min</div><div>Moderate</div><div>Major</div><div>Critical</div> <div>Record</div><div>Monitor</div><div>Routine</div><div>&lt;10 yrs</div><div>&gt;5 yrs</div><div>ASAP</div> 
+                <div>NA</div>
+                <div>UA</div>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>R</div>
+                <div>0</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>X</div>
+                <div>Insp</div>
+                <div>None</div>
+                <div>Minor</div>
+                <div>Fair</div>
+                <div>Poor</div>
+                <div>Severe</div>
+                <div>Local</div>
+                <div>&gt;Local</div>
+                <div>&lt;Gnl</div>
+                <div>General</div>
+                <div>Min</div>
+                <div>Moderate</div>
+                <div>Major</div>
+                <div>Critical</div>
+                <div>Record</div>
+                <div>Monitor</div>
+                <div>Routine</div>
+                <div>&lt;10 yrs</div>
+                <div>&gt;5 yrs</div>
+                <div>ASAP</div>
             </div>
         </div>
     </div>
@@ -329,5 +335,7 @@
     </div>
 
     <script type="module" src="/app.js"></script>
+    <script type="module" src="/scripts/dynamicInventory.js"></script>
 </body>
+
 </html>

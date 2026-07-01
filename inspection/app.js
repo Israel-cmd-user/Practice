@@ -4,7 +4,9 @@ import { populateCurrentDateTime, populateCurrentDate, autoGrow } from './utils/
 import * as PhotoManager from './components/managers/photoManager.js';
 import { initMapPanel } from './components/managers/mapManager.js';
 import { initPhotoInventoryGrid } from './components/managers/inventoryPhotos.js';
-import * as Choices from './components/choices/bridgeChoices.js';
+import * as GlobChoices from './components/choices/globChoices.js';
+import * as BridgeChoices from './components/choices/bridgeChoices.js';
+import * as CulvertChoices from './components/choices/culvertChoices.js';
 
 // Setup Initialization bindings
 window.onload = populateCurrentDateTime;
@@ -90,9 +92,17 @@ function populateDatalist(datalistId, data) {
 }
 
 function populateDropdowns() {
-    populateDatalist('inspector-names', Choices.INSPECTORS);
-    populateSelect('size-category', Choices.SIZE_CATEGORY);
-    populateSelect('bridge-type', Choices.BRIDGE_TYPE);
-    populateSelect('feature-crossed', Choices.FEATURE_CROSSED);
-    populateSelect('bridge-orientation', Choices.STRUC_ORIENTATION);
+    populateDatalist('inspector-names', GlobChoices.INSPECTORS);
+    populateSelect('size-category', BridgeChoices.SIZE_CATEGORY);
+    populateSelect('size-category-cul', CulvertChoices.SIZE_CATEGORY_CUL);
+    populateSelect('bridge-type', BridgeChoices.BRIDGE_TYPE);
+    populateSelect('culvert-type', CulvertChoices.CULVERT_TYPE);
+    populateSelect('feature-crossed', GlobChoices.FEATURE_CROSSED);
+    populateSelect('bridge-orientation', GlobChoices.STRUC_ORIENTATION);
+    populateSelect('culvert-orientation', GlobChoices.STRUC_ORIENTATION);
+    populateSelect('river-flow-direction', GlobChoices.RIVER_FLOW_DIRECTION);
+    populateSelect('road-over-under', GlobChoices.ROAD_OVERUNDER);
+    populateSelect('vertical-alignment', GlobChoices.VERTICAL_ALIGNMNT);
+    populateSelect('horizontal-alignment', GlobChoices.HORIZONTAL_ALIGNMENT);
+    populateSelect('camber-crossfall', GlobChoices.CAMBER_CROSSFALL);
 }

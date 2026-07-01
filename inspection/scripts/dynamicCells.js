@@ -18,10 +18,26 @@ function initDynamicCells() {
         for (let i = 1; i <= cells; i++) {
             html += `<tr data-row-id="${i}">
                 <td>${i}</td>
-                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                <td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td><td><input type="text" class="cell-center"></td>
-                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
-                <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                <td colspan="3">
+                    <div class="rating-box" data-item-key="Walls" data-item-label="10. Walls" data-position="C${i}">
+                        <div><input type="text"></div><div><input type="text"></div><div><input type="text"></div>
+                    </div>
+                </td>
+                <td colspan="3">
+                    <div class="rating-box" data-item-key="TopSlab" data-item-label="11. Top Slab" data-position="C${i}">
+                        <div><input type="text"></div><div><input type="text"></div><div><input type="text"></div>
+                    </div>
+                </td>
+                <td colspan="3">
+                    <div class="rating-box" data-item-key="InvertSlab" data-item-label="12. Invert Slab" data-position="C${i}">
+                        <div><input type="text"></div><div><input type="text"></div><div><input type="text"></div>
+                    </div>
+                </td>
+                <td colspan="3">
+                    <div class="rating-box" data-item-key="CellDeformation" data-item-label="13. Cell Deformation" data-position="C${i}">
+                        <div><input type="text"></div><div><input type="text"></div><div><input type="text"></div>
+                    </div>
+                </td>
             </tr>`;
         }
 
