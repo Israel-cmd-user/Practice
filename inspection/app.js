@@ -60,8 +60,22 @@ window.closeImageViewer = PhotoManager.closeImageViewer;
 window.deleteSingleAsset = PhotoManager.deleteSingleAsset;
 window.deleteSelectedPhotos = PhotoManager.deleteSelectedPhotos;
 
-function populateSelect(selectId, data) {
-    const select = document.getElementById(selectId);
+const ChoicesMap = {
+    'GlobChoices.INSPECTORS': GlobChoices.INSPECTORS,
+    'BridgeChoices.SIZE_CATEGORY': BridgeChoices.SIZE_CATEGORY,
+    'CulvertChoices.SIZE_CATEGORY_CUL': CulvertChoices.SIZE_CATEGORY_CUL,
+    'BridgeChoices.BRIDGE_TYPE': BridgeChoices.BRIDGE_TYPE,
+    'CulvertChoices.CULVERT_TYPE': CulvertChoices.CULVERT_TYPE,
+    'GlobChoices.FEATURE_CROSSED': GlobChoices.FEATURE_CROSSED,
+    'GlobChoices.STRUC_ORIENTATION': GlobChoices.STRUC_ORIENTATION,
+    'GlobChoices.RIVER_FLOW_DIRECTION': GlobChoices.RIVER_FLOW_DIRECTION,
+    'GlobChoices.ROAD_OVERUNDER': GlobChoices.ROAD_OVERUNDER,
+    'GlobChoices.VERTICAL_ALIGNMNT': GlobChoices.VERTICAL_ALIGNMNT,
+    'GlobChoices.HORIZONTAL_ALIGNMENT': GlobChoices.HORIZONTAL_ALIGNMENT,
+    'GlobChoices.CAMBER_CROSSFALL': GlobChoices.CAMBER_CROSSFALL
+};
+
+function populateSelect(select, data) {
     if (!select) return;
     
     // Check if we need to clear existing options (keep placeholder if any)
@@ -80,8 +94,7 @@ function populateSelect(selectId, data) {
     });
 }
 
-function populateDatalist(datalistId, data) {
-    const datalist = document.getElementById(datalistId);
+function populateDatalist(datalist, data) {
     if (!datalist) return;
     datalist.innerHTML = '';
     data.forEach(item => {
@@ -92,17 +105,15 @@ function populateDatalist(datalistId, data) {
 }
 
 function populateDropdowns() {
-    populateDatalist('inspector-names', GlobChoices.INSPECTORS);
-    populateSelect('size-category', BridgeChoices.SIZE_CATEGORY);
-    populateSelect('size-category-cul', CulvertChoices.SIZE_CATEGORY_CUL);
-    populateSelect('bridge-type', BridgeChoices.BRIDGE_TYPE);
-    populateSelect('culvert-type', CulvertChoices.CULVERT_TYPE);
-    populateSelect('feature-crossed', GlobChoices.FEATURE_CROSSED);
-    populateSelect('bridge-orientation', GlobChoices.STRUC_ORIENTATION);
-    populateSelect('culvert-orientation', GlobChoices.STRUC_ORIENTATION);
-    populateSelect('river-flow-direction', GlobChoices.RIVER_FLOW_DIRECTION);
-    populateSelect('road-over-under', GlobChoices.ROAD_OVERUNDER);
-    populateSelect('vertical-alignment', GlobChoices.VERTICAL_ALIGNMNT);
-    populateSelect('horizontal-alignment', GlobChoices.HORIZONTAL_ALIGNMENT);
-    populateSelect('camber-crossfall', GlobChoices.CAMBER_CROSSFALL);
+    document.querySelectorAll('[data-choices]').forEach(element => {
+        const choiceKey = element.getAttribute('data-choices');
+        const data = ChoicesMap[choiceKey];
+        if (data) {
+            if (element.tagName === 'SELECT') {
+                populateSelect(element, data);
+            } else if (element.tagName === 'DATALIST') {
+                populateDatalist(element, data);
+            }
+        }
+    });
 }

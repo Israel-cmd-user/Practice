@@ -99,7 +99,7 @@
                         </td>
                         <th style="width: 25%;">Size Category</th>
                         <td style="width: 25%;">
-                            <select id="size-category" name="size_category" required>
+                            <select id="size-category" data-choices="BridgeChoices.SIZE_CATEGORY" name="size_category" required>
                                 <option value="" disabled selected>Select category...</option>
                             </select>
                         </td>
@@ -107,13 +107,13 @@
                     <tr>
                         <th>Bridge Type</th>
                         <td>
-                            <select id="bridge-type" name="bridge_type" required>
+                            <select id="bridge-type" data-choices="BridgeChoices.BRIDGE_TYPE" name="bridge_type" required>
                                 <option value="" disabled selected>Select type...</option>
                             </select>
                         </td>
                         <th>Structure Orientation</th>
                         <td>
-                            <select id="bridge-orientation" name="structure_orientation" required>
+                            <select id="bridge-orientation" data-choices="GlobChoices.STRUC_ORIENTATION" name="structure_orientation" required>
                                 <option value="" disabled selected>Select orientation...</option>
                             </select>
                         </td>
@@ -121,7 +121,7 @@
                     <tr>
                         <th>Feature Crossed</th>
                         <td>
-                            <select id="feature-crossed" name="feature_crossed" required>
+                            <select id="feature-crossed" data-choices="GlobChoices.FEATURE_CROSSED" name="feature_crossed" required>
                                 <option value="" disabled selected>Select feature...</option>
                             </select>
                         </td>
@@ -131,13 +131,13 @@
                     <tr>
                         <th>Direction of River Flow</th>
                         <td>
-                            <select id="river-flow-direction" name="river_flow_direction">
+                            <select id="river-flow-direction" data-choices="GlobChoices.RIVER_FLOW_DIRECTION" name="river_flow_direction">
                                 <option value="" disabled selected>N/A or Select...</option>
                             </select>
                         </td>
                         <th>Road Over/Under</th>
                         <td>
-                            <select id="road-over-under" name="road_over_under" required>
+                            <select id="road-over-under" data-choices="GlobChoices.ROAD_OVERUNDER" name="road_over_under" required>
                                 <option value="" disabled selected>Select profile...</option>
                             </select>
                         </td>
@@ -159,7 +159,7 @@
                         </td>
                         <th>Vertical Alignment</th>
                         <td>
-                            <select id="vertical-alignment" name="vertical_alignment" required>
+                            <select id="vertical-alignment" data-choices="GlobChoices.VERTICAL_ALIGNMNT" name="vertical_alignment" required>
                                 <option value="" disabled selected>Select profile...</option>
                             </select>
                         </td>
@@ -167,13 +167,13 @@
                     <tr>
                         <th>Horizontal Alignment</th>
                         <td>
-                            <select id="horizontal-alignment" name="horizontal_alignment" required>
+                            <select id="horizontal-alignment" data-choices="GlobChoices.HORIZONTAL_ALIGNMENT" name="horizontal_alignment" required>
                                 <option value="" disabled selected>Select geometry...</option>
                             </select>
                         </td>
                         <th>Camber or Crossfall</th>
                         <td>
-                            <select id="camber-crossfall" name="camber_crossfall">
+                            <select id="camber-crossfall" data-choices="GlobChoices.CAMBER_CROSSFALL" name="camber_crossfall">
                                 <option value="" disabled selected>Select profile...</option>
                             </select>
                         </td>
@@ -316,7 +316,7 @@
     </div>
 
     <script type="module" src="/app.js"></script>
-    <script type="module" src="/scripts/dynamicInventory.js"></script>
+    <script type="module" src="/components/managers/dynamicInventory.js"></script>
 </body>
 
 </html>

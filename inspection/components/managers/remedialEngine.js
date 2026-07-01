@@ -95,8 +95,8 @@ function updateRemedialTable() {
         const item = tableRowsData[i];
 
         if (item) {
-            // Relevancy is appended to the inspection item label
-            const inspectionItemHtml = `${item.label} [R: ${item.relevancy}]`;
+            // Remove Relevancy score display from label
+            const inspectionItemHtml = `${item.label}`;
 
             // Build Activity Description cell
             let activityOptionsHtml = '<option value=""></option>';
@@ -104,7 +104,7 @@ function updateRemedialTable() {
             activities.forEach(act => {
                 activityOptionsHtml += `<option value="${act.label}">${act.id} - ${act.label}</option>`;
             });
-            let activityDescriptionHtml = `<select style="width:100%;">${activityOptionsHtml}</select>`;
+            let activityDescriptionHtml = `<select style="width:100%; border: none; background: transparent; white-space: normal; word-wrap: break-word; font-size: 11px;">${activityOptionsHtml}</select>`;
 
             // Add (+) button only on the first activity row for an item
             let actionHtml = '';
@@ -115,12 +115,12 @@ function updateRemedialTable() {
             const savedData = rowDataStore.get(item.uniqueKey) || {};
             const photoCount = savedData.photoCount || '0';
             const photoClass = parseInt(photoCount) > 0 ? 'has-photos' : '';
-            const btnStyle = parseInt(photoCount) > 0 ? 'border-color: #2563eb;' : '';
+            const btnStyle = parseInt(photoCount) > 0 ? 'color: #2563eb;' : 'color: inherit;';
 
             html += `<tr data-row-id="${i + 1}" data-unique-key="${item.uniqueKey}">
                 <td class="cell-center">${i + 1}</td>
                 <td>${inspectionItemHtml}${actionHtml}</td>
-                <td><input type="text" value="${item.position}" readonly style="text-align: center; background: transparent; border: none; font-weight: bold;"></td>
+                <td><input type="text" style="text-align: center;"></td>
                 <td>${activityDescriptionHtml}</td>
                 <td><input type="text"></td>
                 <td><input type="text"></td>
@@ -129,7 +129,7 @@ function updateRemedialTable() {
                 <td><input type="text"></td>
                 <td class="photo-cell" style="text-align: center; vertical-align: middle; padding: 2px;">
                     <input type="file" id="br-rem-img-${i + 1}" accept="image/*" multiple class="photo-file-input" style="display: none;">
-                    <button type="button" class="photo-manage-btn ${photoClass}" data-target="br-rem-img-${i + 1}" style="padding: 4px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff; ${btnStyle}">
+                    <button type="button" class="photo-manage-btn ${photoClass}" data-target="br-rem-img-${i + 1}" style="padding: 4px 8px; cursor: pointer; border: none; background: transparent; ${btnStyle}">
                         <i class="fa-regular fa-image"></i> <span class="photo-counter ${photoClass}" id="counter-br-rem-img-${i + 1}">${photoCount}</span>
                     </button>
                 </td>
@@ -148,7 +148,7 @@ function updateRemedialTable() {
                 <td><input type="text"></td>
                 <td class="photo-cell" style="text-align: center; vertical-align: middle; padding: 2px;">
                     <input type="file" id="br-rem-img-${i + 1}" accept="image/*" multiple class="photo-file-input" style="display: none;">
-                    <button type="button" class="photo-manage-btn" data-target="br-rem-img-${i + 1}" style="padding: 4px 8px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff;">
+                    <button type="button" class="photo-manage-btn" data-target="br-rem-img-${i + 1}" style="padding: 4px 8px; cursor: pointer; border: none; background: transparent; color: inherit;">
                         <i class="fa-regular fa-image"></i> <span class="photo-counter" id="counter-br-rem-img-${i + 1}">0</span>
                     </button>
                 </td>

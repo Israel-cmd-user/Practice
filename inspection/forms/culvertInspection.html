@@ -55,7 +55,7 @@
             <div>
                 <div class="section-title">Inspection Information</div>
                 <table class="form-grid">
-                    <tr><th>Inspector Name</th><td><input type="text" list="inspector-names"><datalist id="inspector-names"></datalist></td></tr>
+                    <tr><th>Inspector Name</th><td><input type="text" list="inspector-names"><datalist id="inspector-names" data-choices="GlobChoices.INSPECTORS"></datalist></td></tr>
                     <tr><th>Firm</th><td>
                         <select style="width:100%;">
                             <option value="" disabled selected hidden></option>
@@ -73,7 +73,7 @@
                 <div class="section-title">Classification</div>
                 <table class="form-grid">
                     <tr><th style="width:35%;">Asset Class</th><td><input type="text"></td></tr>
-                    <tr><th>Size Category</th><td><select id="size-category-cul" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
+                    <tr><th>Size Category</th><td><select id="size-category-cul" data-choices="CulvertChoices.SIZE_CATEGORY_CUL" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>No of cells</th><td><input type="number" id="classification-cells" value="2" min="1"></td></tr>
                     <tr><th>GPS Coordinates</th><td>Lon: <input type="text" id="lon" style="width:40%; display:inline-block;"> Lat: <input type="text" id="lat" style="width:30%; display:inline-block;"></td></tr>
                 </table>
@@ -119,7 +119,7 @@
                     <tr><th style="width:35%;">Road Number</th><td><input type="text"></td></tr>
                     <tr><th>Road km / Chainage</th><td><input type="text"></td></tr>
                     <tr><th>Maintenance Region</th><td><input type="text"></td></tr>
-                    <tr><th>Feature Crossed</th><td><select id="feature-crossed" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
+                    <tr><th>Feature Crossed</th><td><select id="feature-crossed" data-choices="GlobChoices.FEATURE_CROSSED" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>Feature Name</th><td><input type="text" style="font-weight:bold;"></td></tr>
                     <tr><th></th><td style="padding: 0.9% 0;">&nbsp;</td></tr>
                     <tr><th></th><td style="padding: 0.9% 0;">&nbsp;</td></tr>
@@ -128,9 +128,9 @@
             <div>
                 <div class="section-title">Structure Information</div>
                 <table class="form-grid" style="text-align: left;">
-                    <tr><th style="width:40%;">Culvert Type</th><td><select id="culvert-type" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
+                    <tr><th style="width:40%;">Culvert Type</th><td><select id="culvert-type" data-choices="CulvertChoices.CULVERT_TYPE" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>Year constructed</th><td><input type="text"></td></tr>
-                    <tr><th>Culvert orientation</th><td><select id="culvert-orientation" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
+                    <tr><th>Culvert orientation</th><td><select id="culvert-orientation" data-choices="GlobChoices.STRUC_ORIENTATION" style="width:100%; border:none;"><option value="" disabled selected></option></select></td></tr>
                     <tr><th>No of cells</th><td><input type="number" id="structure-cells" readonly></td></tr>
                     <tr><th>Overall Dim. (L / W)</th><td>L: <input type="text" style="width:30%; display:inline-block;"> W: <input type="text" style="width:30%; display:inline-block;"></td></tr>
                     <tr><th>Min Clear Width (m)</th><td><input type="number"></td></tr>
@@ -266,8 +266,8 @@
 
 
     <script type="module" src="/app.js"></script>
-    <script type="module" src="/scripts/inventoryPhotos.js"></script>
-    <script type="module" src="/scripts/dynamicCells.js"></script>
+    <script type="module" src="/components/managers/inventoryPhotos.js"></script>
+    <script type="module" src="/components/managers/dynamicCells.js"></script>
     <script type="module" src="/components/managers/remedialEngine.js"></script>
 </body>
 </html>
